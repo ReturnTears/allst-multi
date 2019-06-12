@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/allst-multi.iml" filepath="$PROJECT_DIR$/allst-multi.iml" />
+      <module fileurl="file://$PROJECT_DIR$/allst-netty/allst-netty.iml" filepath="$PROJECT_DIR$/allst-netty/allst-netty.iml" />
     </modules>
   </component>
 </project>
