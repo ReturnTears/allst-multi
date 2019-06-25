@@ -13,24 +13,22 @@ import io.netty.channel.socket.nio.NioServerSocketChannel;
  */
 public class TestServer {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         /**
          * 定义两个事件循环线程组
          */
-        EventLoopGroup bossGroup = new NioEventLoopGroup();
-        EventLoopGroup workGroup = new NioEventLoopGroup();
+        EventLoopGroup bossGroup = new NioEventLoopGroup();     // 到客户端接收连接，不对连接做任何处理，将接收到的连接转给workerGroup
+        EventLoopGroup workerGroup = new NioEventLoopGroup();   // 这个连接来对后续的处理，将结果返回给客户端
 
         try {
             ServerBootstrap serverBootstrap = new ServerBootstrap();
-            serverBootstrap.group(bossGroup, workGroup).channel(NioServerSocketChannel.class)
-                    .childHandler(new TestHttpServerHandler());
+            serverBootstrap.group(bossGroup, workerGroup).channel(NioServerSocketChannel.class)
+                    .childHandler(new TestServerInitializer());
             ChannelFuture channelFuture = serverBootstrap.bind(8899).sync();
             channelFuture.channel().closeFuture().sync();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
         } finally {
             bossGroup.shutdownGracefully();
-            workGroup.shutdownGracefully();
+            workerGroup.shutdownGracefully();
         }
     }
 

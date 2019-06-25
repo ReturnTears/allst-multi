@@ -68,9 +68,13 @@
 ## Netty对于RPC的支持 
 
 ## WebSocket实现与原理分析
+
 ## WebSocket连接建立方式与生命周期分解
+
 ## WebSocket服务端和客户端开发
+
 ## RPC框架分析
+
 ## Google Protobuf使用方式分析
     
 ## Apache Thrift使用方式与文件编写方式分析
@@ -97,5 +101,26 @@
 
 
  
- 
+ ## 注意:
+    springboot 2.1.5 + netty 4.1.10.Final 会报错java.lang.ClassNotFoundException: jdk.internal.misc.Unsafe
+    springboot 2.1.5 + netty 4.1.32.Final
+    
+```
+使用curl发送请求:
+curl "http://localhost:8899"    (默认GET请求)
+curl -X POST "http://localhost:8899"
+curl -X PUT "http://localhost:8899"
+curl -X DETELE "http://localhost:8899"
+channel的执行顺序流程 : 
+channel added           添加         
+channel registered      注册
+channel active          激活
+请求方法名: GET           执行channelRead0
+channel inactive        未激活
+channel unregistered    未注册
+
+浏览器的执行机制和curl是不一样的
+
+```
+    
  
