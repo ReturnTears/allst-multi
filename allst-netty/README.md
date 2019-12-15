@@ -1,5 +1,8 @@
 # Netty的学习之旅
+```
+https://www.bilibili.com/video/av46753577/?p=8
 
+```
 ## 学习的关键点:
 
 ### 强势技能的学习

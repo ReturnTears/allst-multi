@@ -6,13 +6,14 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="allst-multi" />
         <module name="allst-netty" />
+        <module name="allst-thread" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="1.8">
       <module name="allst-multi" target="1.8" />
       <module name="allst-netty" target="1.8" />
+      <module name="allst-thread" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">

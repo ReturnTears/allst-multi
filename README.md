@@ -1,6 +1,13 @@
 # Java 并发编程
+```
+https://www.bilibili.com/video/av33688545
+
+一个sychronized代码块是原子操作的
 
 
+```
+## TODO 
+https://www.bilibili.com/video/av33688545?p=19
 
 
 
