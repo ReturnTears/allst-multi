@@ -1,6 +1,6 @@
 # Java并发编程
 ```
-Java并发编程: https://www.bilibili.com/video/av81461839?p=20 (待看线程运行的原理)
+Java并发编程: https://www.bilibili.com/video/av81461839?p=21 (待看线程运行的原理)
 给每个线程取好名字
 logback是slf4j的一个实现
 
@@ -104,3 +104,19 @@ java -Djava.rmi.server.hostname=`ip地址` -Dcom.sun.management.jmxremote
 ```
 
 ## 线程运行的原理
+```text
+栈与栈帧
+Java virtual machine stacks (Java虚拟机栈)
+JVM中由堆,栈,方法区,本地方法栈构成内存空间,每个线程启动后虚拟机都会为其分配一块独立的栈内存空间
+每个栈由多个栈帧组成(Frame)组成,对应着每次方法调用时所占用的内存
+每个线程只能有一个活动栈帧,对应着当前正在执行的那个方法
+
+线程上下文切换(Thread context switch)
+因为一下原因导致CPU不再执行当前的线程了, 转而执行另一个线程的代码
+线程的CPU时间片用完了
+垃圾回收
+有更高优先级的线程需要运行
+线程自己调用了sleep,yield,wait,join,park,synchronized,lock等方法程序
+当
+
+```
