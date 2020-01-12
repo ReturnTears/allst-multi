@@ -8,6 +8,15 @@ package com.allst.concurrent.cast.n3;
 public class FramesTest {
 
     public static void main(String[] args) {
+        Thread t1 = new Thread() {
+            @Override
+            public void run() {
+                mth1(20);
+            }
+        };
+        t1.setName("t1");
+        t1.start();
+
         mth1(22);
     }
 

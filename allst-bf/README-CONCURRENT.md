@@ -1,6 +1,6 @@
 # Java并发编程
 ```
-Java并发编程: https://www.bilibili.com/video/av81461839?p=21 (待看线程运行的原理)
+Java并发编程: https://www.bilibili.com/video/av81461839?p=24 (待看线程中的常见方法)
 给每个线程取好名字
 logback是slf4j的一个实现
 
@@ -113,10 +113,16 @@ JVM中由堆,栈,方法区,本地方法栈构成内存空间,每个线程启动�
 
 线程上下文切换(Thread context switch)
 因为一下原因导致CPU不再执行当前的线程了, 转而执行另一个线程的代码
-线程的CPU时间片用完了
-垃圾回收
-有更高优先级的线程需要运行
-线程自己调用了sleep,yield,wait,join,park,synchronized,lock等方法程序
-当
+1.线程的CPU时间片用完了
+2.垃圾回收
+3.有更高优先级的线程需要运行
+4.线程自己调用了sleep,yield,wait,join,park,synchronized,lock等方法程序
+当ContextSwitch发生时, 需要由操作系统保存当前线程的状态,并恢复另一个线程的状态,Java中对应的概念就是程序计数器(Program Counter Register)
+它的作用是记住下一条jvm指令的执行地址,是线程私有的
+
+状态包括程序计数器,虚拟机中每个栈帧的信息,如局部变量,操作数栈,返回地址等
+ContextSwitch频繁发生会影响性能
 
 ```
+
+## 线程中的常见方法
