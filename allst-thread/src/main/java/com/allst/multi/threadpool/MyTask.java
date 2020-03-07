@@ -22,12 +22,19 @@ public class MyTask implements Runnable {
     @Override
     public void run() {
         String name = Thread.currentThread().getName();
-        System.out.printf("线程: %s 即将执行任务~%d", name, taskId);
+        System.out.printf("线程: %s 即将执行任务~%d \n", name, taskId);
         try {
             Thread.sleep(200);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        System.out.printf("线程: %s 完成任务~%d", name, taskId);
+        System.out.printf("线程: %s 完成任务~%d \n", name, taskId);
+    }
+
+    @Override
+    public String toString() {
+        return "MyTask{" +
+                "taskId=" + taskId +
+                '}';
     }
 }
