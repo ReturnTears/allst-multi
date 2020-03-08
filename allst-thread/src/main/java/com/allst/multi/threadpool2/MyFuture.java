@@ -14,6 +14,11 @@ public class MyFuture {
         ExecutorService es = Executors.newCachedThreadPool();
         // 创建callable类型的任务对象
         Future<Integer> future = es.submit(new MyCall(1, 7));
+
+        // 正在执行的任务被取消
+        // boolean b = future.cancel(true);
+        // System.out.println(b);
+
         boolean done = future.isDone();
         System.out.println("任务是否完成~ " + done);
         boolean rs = future.isCancelled();
