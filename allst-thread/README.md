@@ -49,5 +49,14 @@
 
 ⭐线程池综合案例
 
+🏀 线程池总结:
+  线程池的使用步骤可以归纳总结为五步:
+  🍎 利用Executors工厂类的静态方法，创建线程池对象
+  🍎 编写Runnable或Callable实现类的实例对象
+  🍎 利用ExecutorService的submit方法或ScheduledExecutorService的schedule方法提交并执行线程任务
+  🍎 如果由执行结果，则返回异步执行结果
+  🍎 调用shutdown方法，关闭线程池
+  
+  
 
 ```
