@@ -133,6 +133,14 @@ channel unregistered    未注册
     -- 3) Netty主要是针对TCP协议下，面向Clients端的高并发应用，或者peer-to-peer场景下的大量数据持续传输的应用。
     -- 4) Neety本质是一个NIO框架，适用于服务器通讯相关的多种应用场景。
     -- 5) 要透彻理解Netty，需要先学习NIO，这样才能阅读Netty的源码
+ 🍎 Netty的应用场景
+    -- 互联网行业：1、分布式系统种，各个节点之间需要远程服务调用，高性能的RPC框架必不可少。2、阿里分布式服务框架Dubbo就用到了Netty
+    -- 游戏行业：Netty作为高性能的基础通信组件
+    -- 大数据领域：Hadoop的高性能通信和序列化组件（AVRO实现数据我呢见共享）的RPC框架
+    
+    
+    
+    
  🍎 Netty核心模块
  🍎 Google Protobuf
  🍎 Netty编解码器和handler的调用机制（important）
