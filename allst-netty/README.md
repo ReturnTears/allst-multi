@@ -127,6 +127,12 @@ channel unregistered    未注册
 ```
     
  ## 韩老师的Netty课程学习
+ 🍎 Netty的介绍
+    -- 1) Netty是由JBOSS提供的一个Java开源框架，现为GitHub上的独立项目。
+    -- 2) Netty是一个异步的、基于事件驱动的网络应用框架，用以快速开发高性能、高可靠性的网络IO程序
+    -- 3) Netty主要是针对TCP协议下，面向Clients端的高并发应用，或者peer-to-peer场景下的大量数据持续传输的应用。
+    -- 4) Neety本质是一个NIO框架，适用于服务器通讯相关的多种应用场景。
+    -- 5) 要透彻理解Netty，需要先学习NIO，这样才能阅读Netty的源码
  🍎 Netty核心模块
  🍎 Google Protobuf
  🍎 Netty编解码器和handler的调用机制（important）
