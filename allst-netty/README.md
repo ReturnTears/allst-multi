@@ -126,4 +126,16 @@ channel unregistered    未注册
 
 ```
     
- 
+ ## 韩老师的Netty课程学习
+ 🍎 Netty核心模块
+ 🍎 Google Protobuf
+ 🍎 Netty编解码器和handler的调用机制（important）
+ 🍎 TCP粘包与拆包及解决方案
+ 🍎 Netty核心源码剖析
+   >> Netty启动过程源码剖析
+   >> Netty接受请求过程源码剖析
+   >> Netty的FastThreadLocal源码分析
+   >> Netty在Dubbo中应用源码分析
+   >> Netty心跳（heartbeat）服务源码剖析
+   >> Netty核心组件EventLoop源码剖析
+ 🍎 
