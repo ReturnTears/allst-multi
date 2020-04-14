@@ -1,4 +1,4 @@
-package allst.netty;
+package com.allst.netty;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

@@ -1,4 +1,4 @@
-package allst.netty.exam2;
+package com.allst.netty.exam2;
 
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;

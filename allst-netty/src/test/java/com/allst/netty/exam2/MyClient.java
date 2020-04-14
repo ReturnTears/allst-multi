@@ -1,4 +1,4 @@
-package allst.netty.exam2;
+package com.allst.netty.exam2;
 
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.ChannelFuture;

@@ -1,4 +1,4 @@
-package allst.netty.demo;
+package com.allst.netty.demo;
 
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelPipeline;

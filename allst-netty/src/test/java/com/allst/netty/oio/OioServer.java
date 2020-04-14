@@ -1,4 +1,4 @@
-package allst.netty.oio;
+package com.allst.netty.oio;
 
 import java.io.IOException;
 import java.io.InputStream;
