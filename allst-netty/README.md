@@ -170,7 +170,15 @@ channel unregistered    未注册
         -- BIO是阻塞的，NIO则是非阻塞的
         -- BIO基于字节流和字符流进行操作，而NIO基于Channel和Buffer进行操作， 数据总是从通道读取到缓冲区中，或者从缓冲区中写入到通道中。
            selector用于监听多个通道的事件（连接请求，数据到达），因此使用单个线程就可以监听多个客户端通道。
-       
+        NIO三大核心关系：
+        selector channel buffer
+        -- 每个channel都会对应一个buffer
+        -- selector对应一个线程，一个线程对应多个channel（连接），或者说一个selector对应多个channel，又或者说多个channel注册到了一个selector
+        -- 程序切换到那个channel是由事件决定的，event是一个重要的概念
+        -- selector会根据不同的事件，在各个通道上切换
+        -- buffer就是一个内存块，底层是有一个数组
+        -- 数据的读取写入是通过buffer， 这个和BIO是有区别的，BIO要么是输入流，要么是输出流，不能双向。但是NIO的buffer是可以读写的，需用到flip()切换读写模式。
+        -- channel是双向的，可以返回底层操作系统的情况，比如Linux：底层的操作系统通道就是双向的。
         
                 
         
