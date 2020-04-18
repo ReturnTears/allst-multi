@@ -196,3 +196,41 @@ channel unregistered    未注册
    >> Netty心跳（heartbeat）服务源码剖析
    >> Netty核心组件EventLoop源码剖析
  🍎 
+ 
+ ## Netty从入门到精通
+ ```text
+@ https://www.bilibili.com/video/BV19Z4y1x7da?p=2
+```
+ ### 第一章：初识Netty背景、现状、与趋势
+ ```text
+Netty是2004年开发的
+本质：网络应用程序框架
+实现：异步、事件驱动
+特性：高性能、可维护、快速开发
+用途：开发服务器和客户端
+
+```
+### 第二章：Netty源码从"点"（领域知识）的角度剖析
+```text
+
+```
+
+### 第三章：Netty源码从"线"（请求处理）的角度剖析
+```text
+
+```
+
+### 第四章：Netty实战
+```text
+
+```
+
+### 第五章：Netty实战进阶
+```text
+
+
+```
+### 第六章：赏析高级应用是如何使用Netty的
+```text
+
+```
