@@ -209,6 +209,48 @@ Netty是2004年开发的
 特性：高性能、可维护、快速开发
 用途：开发服务器和客户端
 
+为什么舍近求远？而不直接使用JDK NIO呢？
+Netty做的更多：
+·支持常用应用层协议
+·解决传输问题：粘包，半包现象
+·支持流量整形
+·完善的断连、Idle等异常处理
+Netty做的更好之一：规避JDK NIO bug
+Netty做的更好之二：API更友好更强大
+·JDK的NIO一些API不够友好，功能薄弱，例如ByteBuffer -> Netty`s ByteBuf
+·除了NIO外，也提供了其他一些增强：ThreadLocal -> Netty`s FastThreadLocal
+Netty做的更好之三：隔离变化、屏蔽细节
+·隔离JDK NIO的实现变化： NIO -> NIO2(aio) ->...
+·屏蔽JDK NIO的实现细节
+
+其他的网络编程应用框架：
+·apache Mina
+·Sun Grizzly
+·Apple swift NIO、ACE
+·Cindy
+·tomcat jetty
+
+Netty的前尘往事
+Netty归属于JBoss
+
+Netty的现状与趋势
+https://github.com/netty/netty
+依赖项中声明io.netty:netty-all
+使用Netty的典典型项目：
+数据库：Cassandra
+大数据处理：Spark、Hadoop
+Message Queue: RocketMQ
+检索：Elasticsearch
+框架：gRPC、Apache Dubbo、Spring5
+分布式协调器: Zookeeper
+工具类：async-http-client
+其他参考：https://netty.io/wiki/adopters.html
+Netty的趋势：
+更多流行协议的支持
+紧跟JDK新功能步伐
+更多易用、人性化的功能
+IP地址黑白名单、流量整形
+应用越来越多
 ```
 ### 第二章：Netty源码从"点"（领域知识）的角度剖析
 ```text
