@@ -19,6 +19,7 @@ public class BasicBuffer {
         // 读取元素
         intBuffer.flip();   // 读写切换
         while (intBuffer.hasRemaining()) {
+            // get方法维护了一个索引， 每get一次索引就往后移动一次
             System.out.println(intBuffer.get());
         }
     }
