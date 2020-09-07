@@ -200,10 +200,18 @@ channel unregistered    未注册
          mark          标记
          
          通道（Channel）
-         基本介绍：NIO的通道类似于流，区别如下：
+         1、基本介绍：NIO的通道类似于流，区别如下：
          -- 通道可以同时进行读写，而流只能读或者只能写
          -- 通道可以实现异步读写数据
          -- 通道可以从缓冲区读取数据，也可以写数据到缓冲区
+         2、BIO中的stream是单向的
+         3、Channel是NIO中的一个接口
+            public interface CHannel extends Closeable {}
+         4、常用Channel类：
+            FilrChannel、DatagramChannel、ServerSocketChannel和SocketChannel
+         5、FileChannel用于文件的数据读写，
+            DatagramChannel用于UDP数据读写
+            ServerSocketChannel和SocketChannel用于TCP的数据读写 
         
         
  🍎 Netty核心模块
