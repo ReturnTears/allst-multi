@@ -212,7 +212,8 @@ channel unregistered    未注册
          5、FileChannel用于文件的数据读写，
             DatagramChannel用于UDP数据读写
             ServerSocketChannel和SocketChannel用于TCP的数据读写 
-        
+         6、NIO还提供了MappedByteBuffer， 可以让文件直接在内存(堆外的内存)中进行修改，而如何同步到文件由NIO来完成。
+         7、NIO还支持通过多个Buffer（即Buffer数组）完成读写操作。即Scattering和Gathering
         
  🍎 Netty核心模块
  🍎 Google Protobuf
