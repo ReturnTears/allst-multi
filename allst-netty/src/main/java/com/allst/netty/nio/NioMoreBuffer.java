@@ -13,6 +13,7 @@ import java.util.Arrays;
  * Scattering将数据写入到buffer时，可以采用buffer数组，依次写入
  * Gathering从buffer读取数据时，可以采用buffer数组， 依次读取
  *
+ * telnet localhost port
  * @author YiYa
  * @since 2020-09-09 下午 11:31
  */

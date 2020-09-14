@@ -208,13 +208,39 @@ channel unregistered    未注册
          3、Channel是NIO中的一个接口
             public interface CHannel extends Closeable {}
          4、常用Channel类：
-            FilrChannel、DatagramChannel、ServerSocketChannel和SocketChannel
+            FileChannel、DatagramChannel、ServerSocketChannel和SocketChannel
          5、FileChannel用于文件的数据读写，
             DatagramChannel用于UDP数据读写
             ServerSocketChannel和SocketChannel用于TCP的数据读写 
          6、NIO还提供了MappedByteBuffer， 可以让文件直接在内存(堆外的内存)中进行修改，而如何同步到文件由NIO来完成。
          7、NIO还支持通过多个Buffer（即Buffer数组）完成读写操作。即Scattering和Gathering
         
+        selector（选择器）
+        基本介绍:
+            1、Java的NIO，用非阻塞的IO方式， 可以用一个线程， 处理多个客户端的连接，就会使用到Selector(选择器)
+            2、selector能够检测多个注册通道上是否有事件发生(注意：多个channel以事件的方式可以注册到同一个selector)
+               如果有事件发生，便获取事件然后针对每个事件进行相应的处理。这样就可以只用一个单线程去管理多个通道，
+               也就是管理多个连接和请求
+            3、只有在连接/通道真正有读写事件发生时， 才会进行读写，就大大地减少了系统开销， 不必要为每个连接创建一个线程， 
+            4、避免多线程之间的上下文切换的开销
+        特点:
+            1、Netty的IO线程NioEventLoop聚合了Selector选择器（也叫做多路复用器）， 可以同时并发处理成百上千个客户端来连接
+            2、当线程从某客户端socket通道进行读写数据时， 如没有数据可用时， 该线程可以进行其他任务
+            3、线程通常将非阻塞IO的空闲时间用于在其他通道上执行IO操作，所有单独的线程可以管理多个输入和输出通道
+            4、由于读写操作都是非阻塞的，这就可以充分提升IO线程的运行效率，避免由于频繁IO阻塞导致线程挂起
+            5、一个IO线程可以并发处理N个客户端连接个读写操作，这从根本上解决了传统同步阻塞I/O一连接一线程模型，架构的性能，弹性伸缩能力和可靠性都得到了极大的提升。
+        selector类及其相关方法:
+            selector类是一个抽象类， 常用方法如下：
+            public abstract class Selector implements Closeable {
+                // 得到一个选择器对象
+                public static Selector open();
+                // 监控所有注册通道， 当其中有IO操作可进行时，将对应的selectionKey加入到内部集合中并返回， 参数用于设置超时时间
+                public int select()
+                // 从内部集合中得到所有的selectionKey
+                public Set<SelectionKey> selectdKeys();
+            }
+            
+            
  🍎 Netty核心模块
  🍎 Google Protobuf
  🍎 Netty编解码器和handler的调用机制（important）

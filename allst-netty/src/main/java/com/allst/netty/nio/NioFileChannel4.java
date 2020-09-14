@@ -5,10 +5,11 @@ import java.io.FileOutputStream;
 import java.nio.channels.FileChannel;
 
 /**
+ * transferFrom
  * @author YiYa
  * @since 2020-04-27 下午 10:41
  */
-public class NioFIleChannel4 {
+public class NioFileChannel4 {
     public static void main(String[] args) throws Exception {
         FileInputStream fileInputStream = new FileInputStream("E:\\TestData\\gc.log");
         FileChannel inChannel = fileInputStream.getChannel();
