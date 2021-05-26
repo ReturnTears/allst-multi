@@ -1,4 +1,4 @@
-# Java并发编程
+# Java并发编程1
 ```
 Java并发编程: https://www.bilibili.com/video/av81461839?p=24 (待看线程中的常见方法)
 给每个线程取好名字
@@ -126,6 +126,32 @@ ContextSwitch频繁发生会影响性能
 ```
 
 ## 线程中的常见方法
+```text
+
+```
+
+# Java并发编程2
+```text
+https://www.bilibili.com/video/BV1XX4y1V7Es?p=3
+
+```
+## 进程
+```text
+
+```
+## 线程
+```text
+
+```
+##并发-共享模型
+```text
+
+```
+##并发-非共享模型
+```text
+
+```
+## 并行
 ```text
 
 ```

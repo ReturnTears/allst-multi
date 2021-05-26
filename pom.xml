@@ -12,6 +12,7 @@
         <module>allst-bf</module>
         <module>allst-netty</module>
         <module>allst-thread</module>
+        <module>allst-nginx</module>
     </modules>
 
     <name>allst-multi</name>
