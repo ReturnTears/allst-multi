@@ -60,3 +60,18 @@
   
 
 ```
+
+# java线程 
+JMH: Java多线程测试工具
+Windows下查看进程信息：
+1、打开任务管理器
+2、命令行 tasklist 或者 tasklist | findstr java
+3、杀死进程：taskkill /F /PID 进程号 /F表示强制杀死 
+
+Linux下查看Java进程：
+1、jps 查看所有Java进程
+2、jstack PID 查看某个Java进程的所有线程状态
+3、jconsole 来查看某个Java进程中线程的运行情况(图像界面)
+jconsole远程监控配置：
+java -Djava.rmi.server.hostname="ip地址" -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port="连接端口"
+-Dcom.sun.management.jmxremote.ssl=是否安全连接(true/false) -Dcom.sun.management.jmxremote.authenticate=是否认证(true/false) Java类

@@ -18,7 +18,8 @@ public class Sync {
     public static void main(String[] args) {
         try {
             FileReader reader = new FileReader(Constants.MP4_FULL_PATH);    // 同步
-            reader.read();
+            int read = reader.read();
+            log.debug(read + "");
             log.debug("do other things....");
         } catch (FileNotFoundException e) {
             e.printStackTrace();

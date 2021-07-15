@@ -132,7 +132,6 @@ ContextSwitch频繁发生会影响性能
 
 # Java并发编程2
 ```text
-https://www.bilibili.com/video/BV1XX4y1V7Es?p=3
 
 ```
 ## 进程

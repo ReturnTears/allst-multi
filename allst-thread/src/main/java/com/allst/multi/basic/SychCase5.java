@@ -29,4 +29,7 @@ public class SychCase5 {
         System.out.println("mth2");
     }
 
+    public static void main(String[] args) {
+        new SychCase5().mth1();
+    }
 }
