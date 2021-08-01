@@ -11,5 +11,11 @@
 
     <artifactId>allst-nginx</artifactId>
 
-
+    <dependencies>
+        <dependency>
+            <groupId>cn.bestwu</groupId>
+            <artifactId>fastdfs-client-java</artifactId>
+            <version>1.27</version>
+        </dependency>
+    </dependencies>
 </project>

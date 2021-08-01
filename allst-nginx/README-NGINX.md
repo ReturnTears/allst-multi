@@ -43,3 +43,8 @@ nginx服务的信号控制
 5.如何通过信号控制nginx的启停等相关操作?
 nginx服务的命令控制
 ```
+
+# Nginx访问FasfDFS上的文件
+```text
+
+```
