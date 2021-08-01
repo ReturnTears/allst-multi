@@ -138,12 +138,12 @@ ServerIP: 192.168.0.100
 7.2、tracker
     /usr/bin/fdfs_trackerd /etc/fdfs/tracker.conf start #启动tracker服务
     /usr/bin/fdfs_trackerd /etc/fdfs/tracker.conf restart #重启动tracker服务
-    /usr/bin/fdfs_trackerd  stop #停止tracker服务
+    /usr/bin/fdfs_trackerd /etc/fdfs/tracker.conf stop #停止tracker服务
     chkconfig fdfs_trackerd on #自启动tracker服务
 7.3、storage
     /usr/bin/fdfs_storaged /etc/fdfs/storage.conf start #启动storage服务
     /usr/bin/fdfs_storaged /etc/fdfs/storage.conf restart #重动storage服务
-    /usr/bin/fdfs_storaged  stop #停止动storage服务
+    /usr/bin/fdfs_storaged /etc/fdfs/tracker.conf stop #停止动storage服务
     chkconfig fdfs_storaged on #自启动storage服务
 7.4、nginx
     /usr/local/nginx/sbin/nginx #启动nginx
