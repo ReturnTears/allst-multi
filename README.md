@@ -5,8 +5,6 @@
 
 
 ```
-## 视频地址
-黑马: https://www.bilibili.com/video/av81461839?p=1 
 
 ## 🍎 allst-bf 并发相关
 
