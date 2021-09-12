@@ -347,3 +347,16 @@ Netty实战相关编码放在 actual_combat 包下
 
 
 ```
+
+## Protobuf
+protobuf工具下载地址：
+https://github.com/protocolbuffers/protobuf/releases/tag/v3.17.3
+找到符合自己的系统的安装包下载解压即可，如想直接使用protoc.exe工具， 最好配置环境变量
+
+通过*.proto文件生成对应的*.java文件：
+方式1：在指定的文件夹E:\TestData\下执行该命令，需要把UserInfo.proto文件放在TestData文件夹下
+protoc.exe --java_out=E:\TestData\ ./UserInfo.proto
+在项目UserInfo.proto文件所在文件夹下执行如下命令：
+protoc.exe --java_out=./ ./com.allst.netty.protobuf.proto.UserInfo.proto
+
+
