@@ -86,7 +86,7 @@ jps
 Java
 jps命令查看所有进程
 jstack <PID>查看某个Java进程PID的所有线程状态
-jconsole来查看某俄国Java进程中线程的运行情况
+jconsole来查看某个Java进程中线程的运行情况
 
 jconsole远程监控配置
 1.需要以如下方式运行你的Java类
