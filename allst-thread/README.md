@@ -1,5 +1,13 @@
-# Thread 线程
+# 线程
+```text
 
+1、为什么需要多线程
+CPU、内存、I/O 设备的速度是有极大差异的，为了合理利用 CPU 的高性能，平衡这三者的速度差异，计算机体系结构、操作系统、编译程序都做出了贡献，
+主要体现为: 
+    CPU 增加了缓存，以均衡与内存的速度差异；// 导致 可见性问题  
+    操作系统增加了进程、线程，以分时复用 CPU，进而均衡 CPU 与 I/O 设备的速度差异；// 导致 原子性问题
+    编译程序优化指令执行次序，使得缓存能够得到更加合理地利用。// 导致 有序性问题
+```
 
 # 线程池
 ```text
@@ -61,7 +69,8 @@
 
 ```
 
-# java线程 
+# Java线程 
+```text
 JMH: Java多线程测试工具
 Windows下查看进程信息：
 1、打开任务管理器
@@ -75,3 +84,4 @@ Linux下查看Java进程：
 jconsole远程监控配置：
 java -Djava.rmi.server.hostname="ip地址" -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port="连接端口"
 -Dcom.sun.management.jmxremote.ssl=是否安全连接(true/false) -Dcom.sun.management.jmxremote.authenticate=是否认证(true/false) Java类
+```
