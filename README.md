@@ -23,7 +23,7 @@
 
 
 ## 🍎 allst-thread 线程相关
-[allst-netty](allst-thread/README.md)
+[allst-thread](allst-thread/README.md)
 
 
 ## Java多线程与并发
