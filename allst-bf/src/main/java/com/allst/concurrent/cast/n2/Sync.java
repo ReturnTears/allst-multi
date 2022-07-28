@@ -3,7 +3,6 @@ package com.allst.concurrent.cast.n2;
 import com.allst.concurrent.cast.Constants;
 import lombok.extern.slf4j.Slf4j;
 
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
@@ -21,8 +20,6 @@ public class Sync {
             int read = reader.read();
             log.debug(read + "");
             log.debug("do other things....");
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }

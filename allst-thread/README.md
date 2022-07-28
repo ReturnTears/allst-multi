@@ -86,3 +86,15 @@ jconsole远程监控配置：
 java -Djava.rmi.server.hostname="ip地址" -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port="连接端口"
 -Dcom.sun.management.jmxremote.ssl=是否安全连接(true/false) -Dcom.sun.management.jmxremote.authenticate=是否认证(true/false) Java类
 ```
+
+# Synchronized
+```text
+在应用Sychronized关键字时需要把握如下注意点：
+1、一把锁只能同时被一个线程获取，没有获得锁的线程只能等待；
+2、每个实例都对应有自己的一把锁(this),不同实例之间互不影响；例外：锁对象是*.class以及synchronized修饰的是static方法的时候，所有对象公用同一把锁
+3、synchronized修饰的方法，无论方法正常执行完毕还是抛出异常，都会释放锁
+
+对象锁：
+🍌包括方法锁(默认锁对象为this,当前实例对象)和同步代码块锁(自己指定锁对象
+
+```
