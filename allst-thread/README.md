@@ -97,4 +97,11 @@ java -Djava.rmi.server.hostname="ip地址" -Dcom.sun.management.jmxremote -Dcom.
 对象锁：
 🍌包括方法锁(默认锁对象为this,当前实例对象)和同步代码块锁(自己指定锁对象
 
+方法锁：
+🍌synchronized修饰普通方法，锁对象默认为this
+
+类锁:
+🍌指synchronize修饰静态的方法或指定锁对象为Class对象
+ 
+
 ```
