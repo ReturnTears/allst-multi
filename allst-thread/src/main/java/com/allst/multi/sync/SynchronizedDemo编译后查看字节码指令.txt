@@ -1,0 +1,98 @@
+E:\IdeaProjects\allst-multi\allst-thread\src\main\java\com\allst\multi\sync>javac SynchronizedDemo.java
+
+E:\IdeaProjects\allst-multi\allst-thread\src\main\java\com\allst\multi\sync>javap -verbose SynchronizedDemo.class
+Classfile /E:/IdeaProjects/allst-multi/allst-thread/src/main/java/com/allst/multi/sync/SynchronizedDemo.class
+  Last modified 2022年8月1日; size 514 bytes
+  MD5 checksum ec9b43570d1292f90b435fb1df79d6ec
+  Compiled from "SynchronizedDemo.java"
+public class com.allst.multi.sync.SynchronizedDemo
+  minor version: 0
+  major version: 55
+  flags: (0x0021) ACC_PUBLIC, ACC_SUPER
+  this_class: #5                          // com/allst/multi/sync/SynchronizedDemo
+  super_class: #2                         // java/lang/Object
+  interfaces: 0, fields: 1, methods: 3, attributes: 1
+Constant pool:
+   #1 = Methodref          #2.#18         // java/lang/Object."<init>":()V
+   #2 = Class              #19            // java/lang/Object
+   #3 = Fieldref           #5.#20         // com/allst/multi/sync/SynchronizedDemo.object:Ljava/lang/Object;
+   #4 = Methodref          #5.#21         // com/allst/multi/sync/SynchronizedDemo.method2:()V
+   #5 = Class              #22            // com/allst/multi/sync/SynchronizedDemo
+   #6 = Utf8               object
+   #7 = Utf8               Ljava/lang/Object;
+   #8 = Utf8               <init>
+   #9 = Utf8               ()V
+  #10 = Utf8               Code
+  #11 = Utf8               LineNumberTable
+  #12 = Utf8               method1
+  #13 = Utf8               StackMapTable
+  #14 = Class              #23            // java/lang/Throwable
+  #15 = Utf8               method2
+  #16 = Utf8               SourceFile
+  #17 = Utf8               SynchronizedDemo.java
+  #18 = NameAndType        #8:#9          // "<init>":()V
+  #19 = Utf8               java/lang/Object
+  #20 = NameAndType        #6:#7          // object:Ljava/lang/Object;
+  #21 = NameAndType        #15:#9         // method2:()V
+  #22 = Utf8               com/allst/multi/sync/SynchronizedDemo
+  #23 = Utf8               java/lang/Throwable
+{
+  java.lang.Object object;
+    descriptor: Ljava/lang/Object;
+    flags: (0x0000)
+
+  public com.allst.multi.sync.SynchronizedDemo();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=3, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+         4: aload_0
+         5: new           #2                  // class java/lang/Object
+         8: dup
+         9: invokespecial #1                  // Method java/lang/Object."<init>":()V
+        12: putfield      #3                  // Field object:Ljava/lang/Object;
+        15: return
+      LineNumberTable:
+        line 3: 0
+        line 5: 4
+
+  public void method1();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=2, locals=3, args_size=1
+         0: aload_0
+         1: getfield      #3                  // Field object:Ljava/lang/Object;
+         4: dup
+         5: astore_1
+         6: monitorenter
+         7: aload_1
+         8: monitorexit
+         9: goto          17
+        12: astore_2
+        13: aload_1
+        14: monitorexit
+        15: aload_2
+        16: athrow
+        17: invokestatic  #4                  // Method method2:()V
+        20: return
+      Exception table:
+         from    to  target type
+             7     9    12   any
+            12    15    12   any
+      LineNumberTable:
+        line 8: 0
+        line 10: 7
+        line 11: 17
+        line 12: 20
+      StackMapTable: number_of_entries = 2
+        frame_type = 255 /* full_frame */
+          offset_delta = 12
+          locals = [ class com/allst/multi/sync/SynchronizedDemo, class java/lang/Object ]
+          stack = [ class java/lang/Throwable ]
+        frame_type = 250 /* chop */
+          offset_delta = 4
+}
+SourceFile: "SynchronizedDemo.java"
