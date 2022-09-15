@@ -265,6 +265,48 @@ i++为什么不能保证原子性?
 所有多核处理器下还会完成：当处理器发现本地缓存失效后，就会从内存中重读该变量数据，即可以获取当前最新值。
 
 volatile 变量通过这样的机制就使得每个线程都能获得该变量的最新值。
+
+2、volatile 有序性实现
+volatile 的 happens-before 关系
+happens-before 规则中有一条是 volatile 变量规则：对一个 volatile 域的写，happens-before 于任意后续对这个 volatile 域的读。
+例如：
+    int a = 0;
+    volatile boolean flag = false;
+    线程A ： a = 1;            // 1
+            flag = true;      // 2
+    线程B ： if (flag)         // 3
+            int i = a;        // 4
+根据 happens-before 规则，上面过程会建立 3 类 happens-before 关系。
+1)、根据程序次序规则：1 happens-before 2 且 3 happens-before 4。
+2）、根据 volatile 规则：2 happens-before 3。
+3）、根据 happens-before 的传递性规则：1 happens-before 4。
+
+因为以上规则，当线程 A 将 volatile 变量 flag 更改为 true 后，线程 B 能够迅速感知。
+
+
+volatile 禁止重排序
+为了性能优化，JMM 在不改变正确语义的前提下，会允许编译器和处理器对指令序列进行重排序。JMM 提供了内存屏障阻止这种重排序。
+Java 编译器会在生成指令系列时在适当的位置会插入内存屏障指令来禁止特定类型的处理器重排序。
+JMM 会针对编译器制定 volatile 重排序规则表。
+
+" NO " 表示禁止重排序。
+
+为了实现 volatile 内存语义时，编译器在生成字节码时，会在指令序列中插入内存屏障来禁止特定类型的处理器重排序。
+
+对于编译器来说，发现一个最优布置来最小化插入屏障的总数几乎是不可能的，为此，JMM 采取了保守的策略。
+
+在每个 volatile 写操作的前面插入一个 StoreStore 屏障。
+在每个 volatile 写操作的后面插入一个 StoreLoad 屏障。
+在每个 volatile 读操作的后面插入一个 LoadLoad 屏障。
+在每个 volatile 读操作的后面插入一个 LoadStore 屏障。
+
+volatile 写是在前面和后面分别插入内存屏障，而 volatile 读操作是在后面插入两个内存屏障。
+
+内存屏障            说明 
+StoreStore 屏障   禁止上面的普通写和下面的 volatile 写重排序。 
+StoreLoad 屏障    防止上面的 volatile 写与下面可能有的 volatile 读/写重排序。 
+LoadLoad 屏障     禁止下面所有的普通读操作和上面的 volatile 读重排序。 
+LoadStore 屏障    禁止下面所有的普通写操作和上面的 volatile 读重排序。 
 ```
 
 ## 🍒 Remark
