@@ -5,7 +5,7 @@ package com.allst.multi.basic;
  * @author YiYa
  * @since 2019-12-15
  */
-public class SyncCase1 {
+public class SychCase1 {
 
     private int count = 0;
     private Object o = new Object();
