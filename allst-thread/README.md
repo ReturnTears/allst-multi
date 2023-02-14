@@ -85,6 +85,17 @@ Linux下查看Java进程：
 jconsole远程监控配置：
 java -Djava.rmi.server.hostname="ip地址" -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port="连接端口"
 -Dcom.sun.management.jmxremote.ssl=是否安全连接(true/false) -Dcom.sun.management.jmxremote.authenticate=是否认证(true/false) Java类
+
+Linux下使用perf命令来监视Java程序运行过程中的上下文切换情况：
+pref stat -e cpu-clock,task-clock,cs,cache-references,cache-misses java java类
+其中，cs表示被监视程序的上下文切换次数
+
+在Windows平台下，可以使用Windows自带的工具perfmon来监视Java程序运行过程中的上下文切换情况
+
+对线程的监视
+1、JDK自带的工具jvisualvm[8]可以实现对线程的监视，它适合在开发和测试环境下监视Java系统中的线程情况
+2、jstack是一个命令行工具，通过它可以获取指定Java进程的线程信息
+3、在Java 8中，还可以使用Java Mission Control（JMC）工具来监视Java线
 ```
 
 # Synchronized
