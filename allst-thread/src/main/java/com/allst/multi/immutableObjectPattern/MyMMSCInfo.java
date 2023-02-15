@@ -7,11 +7,11 @@ package com.allst.multi.immutableObjectPattern;
  * @since 2023-02-15 下午 10:28
  */
 public final class MyMMSCInfo {
-    //
+    // 设备编号
     private final String deviceID;
-    //
+    // 对应url
     private final String url;
-    //
+    // 支持最大附件大小
     private final int maxAttachmentSizeInBytes;
 
     public MyMMSCInfo(String deviceID, String url, int maxAttachmentSizeInBytes) {

@@ -11,12 +11,13 @@ import java.util.Map;
  * @since 2023-02-15 下午 10:19
  */
 public final class MyMMSCRouter {
-    //
+    // 用volatile关键之修饰，保证在多线程环境下该变量的可见性
     private static volatile MyMMSCRouter instance = new MyMMSCRouter();
-    //
+    // 维护映射关系
     private final Map<String, MyMMSCInfo> routerMap;
 
     public MyMMSCRouter() {
+        // 讲数据库表中的数据加载到内存， 存为Map
         this.routerMap = MyMMSCRouter.retrieveRouterMapFromDB();
     }
 
@@ -29,10 +30,16 @@ public final class MyMMSCRouter {
         return instance;
     }
 
+    /**
+     * 返回映射实体信息
+     */
     public MyMMSCInfo getMMSC(String msisdnPrefix) {
         return routerMap.get(msisdnPrefix);
     }
 
+    /**
+     * 将当前的MyMMSCRouter实例更新为指定的新实例
+     */
     public static void setInstance(MyMMSCRouter newInstance) {
         instance = newInstance;
     }
@@ -46,6 +53,7 @@ public final class MyMMSCRouter {
     }
 
     public Map<String, MyMMSCInfo> getRouteMap() {
+        // 进行防御性复制
         return Collections.unmodifiableMap(deepCopy(routerMap));
     }
 }
