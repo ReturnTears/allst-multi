@@ -1,0 +1,140 @@
+# JMH version: 1.36
+# VM version: JDK 11.0.7, Java HotSpot(TM) 64-Bit Server VM, 11.0.7+8-LTS
+# VM invoker: D:\Program Files\Java\jdk-11.0.7\bin\java.exe
+# VM options: -javaagent:D:\Program Files\JetBrains\IntelliJ IDEA 2023.2\lib\idea_rt.jar=52013:D:\Program Files\JetBrains\IntelliJ IDEA 2023.2\bin -Dfile.encoding=UTF-8
+# Blackhole mode: full + dont-inline hint (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 5 iterations, 10 s each
+# Measurement: 10 iterations, 10 s each
+# Timeout: 10 min per iteration
+# Threads: 6 threads (1 group; 3x "testRead", 3x "testWrite" in each group), will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: com.allst.jmh.example.JmhExample02.test
+
+# Run progress: 0.00% complete, ETA 00:02:30
+# Fork: 1 of 1
+# Warmup Iteration   1: create instance
+write
+write
+write
+write
+write
+write
+write
+write
+write
+write
+write
+write
+write
+write
+write
+write
+write
+write
+write
+write
+write
+write
+write
+write
+write
+write
+write
+write
+write
+write
+write
+write
+write
+write
+write
+write
+write
+write
+write
+write
+write
+write
+write
+write
+write
+write
+write
+write
+write
+write
+write
+write
+write
+write
+write
+write
+write
+write
+write
+write
+write
+write
+write
+write
+write
+write
+write
+write
+write
+write
+write
+write
+write
+write
+write
+write
+read
+read
+read
+read
+read
+read
+read
+read
+read
+read
+read
+read
+read
+read
+read
+read
+read
+read
+read
+read
+read
+read
+read
+read
+read
+read
+read
+read
+read
+read
+read
+read
+read
+read
+read
+read
+read
+read
+read
+read
+read
+read
+read
+read
+read
+read
+read
+write
+...
