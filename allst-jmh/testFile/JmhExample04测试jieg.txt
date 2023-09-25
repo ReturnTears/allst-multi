@@ -1,0 +1,57 @@
+# JMH version: 1.36
+# VM version: JDK 11.0.7, Java HotSpot(TM) 64-Bit Server VM, 11.0.7+8-LTS
+# VM invoker: D:\Program Files\Java\jdk-11.0.7\bin\java.exe
+# VM options: -javaagent:D:\Program Files\JetBrains\IntelliJ IDEA 2023.2\lib\idea_rt.jar=59282:D:\Program Files\JetBrains\IntelliJ IDEA 2023.2\bin -Dfile.encoding=UTF-8
+# Blackhole mode: full + dont-inline hint (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 5 iterations, 10 s each
+# Measurement: 5 iterations, 10 s each
+# Timeout: 10 min per iteration
+# Threads: 5 threads, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: com.allst.jmh.example.JmhExample04.test
+# Parameters: (type = 1)
+
+# Run progress: 0.00% complete, ETA 00:06:40
+# Fork: 1 of 1
+# Warmup Iteration   1: 4.252 ±(99.9%) 2.328 us/op
+# Warmup Iteration   2: 6.399 ±(99.9%) 1.798 us/op
+# Warmup Iteration   3: 9.694 ±(99.9%) 13.760 us/op
+# Warmup Iteration   4: 6.634 ±(99.9%) 1.458 us/op
+# Warmup Iteration   5: 12.782 ±(99.9%) 5.333 us/op
+Iteration   1: 13.785 ±(99.9%) 5.015 us/op
+Iteration   2: 7346.638 ±(99.9%) 61389.890 us/op
+Iteration   3: 6796.576 ±(99.9%) 10982.391 us/op
+Iteration   4:
+Exception: java.lang.OutOfMemoryError thrown from the UncaughtExceptionHandler in thread "com.allst.jmh.example.JmhExample04.test-jmh-worker-1"
+
+Exception: java.lang.OutOfMemoryError thrown from the UncaughtExceptionHandler in thread "com.allst.jmh.example.JmhExample04.test-jmh-worker-5"
+<binary link had failed, forked VM corrupted the stream? Use EXTRA verbose to print exception>
+<forked VM failed with exit code 1>
+<stdout last='20 lines'>
+</stdout>
+<stderr last='20 lines'>
+
+Exception: java.lang.OutOfMemoryError thrown from the UncaughtExceptionHandler in thread "com.allst.jmh.example.JmhExample04.test-jmh-worker-1"
+
+Exception: java.lang.OutOfMemoryError thrown from the UncaughtExceptionHandler in thread "com.allst.jmh.example.JmhExample04.test-jmh-worker-5"
+</stderr>
+
+# JMH version: 1.36
+# VM version: JDK 11.0.7, Java HotSpot(TM) 64-Bit Server VM, 11.0.7+8-LTS
+# VM invoker: D:\Program Files\Java\jdk-11.0.7\bin\java.exe
+# VM options: -javaagent:D:\Program Files\JetBrains\IntelliJ IDEA 2023.2\lib\idea_rt.jar=59282:D:\Program Files\JetBrains\IntelliJ IDEA 2023.2\bin -Dfile.encoding=UTF-8
+# Blackhole mode: full + dont-inline hint (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 5 iterations, 10 s each
+# Measurement: 5 iterations, 10 s each
+# Timeout: 10 min per iteration
+# Threads: 5 threads, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: com.allst.jmh.example.JmhExample04.test
+# Parameters: (type = 2)
+
+# Run progress: 0.00% complete, ETA 00:06:40
+# Fork: 1 of 1
+# Warmup Iteration   1: 1.882 ±(99.9%) 0.125 us/op
+# Warmup Iteration   2: 5.428 ±(99.9%) 0.169 us/op
+# Warmup Iteration   3: 121.611 ±(99.9%) 66.038 us/op
+# Warmup Iteration   4:
