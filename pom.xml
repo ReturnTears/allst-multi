@@ -13,6 +13,8 @@
         <module>allst-netty</module>
         <module>allst-thread</module>
         <module>allst-nginx</module>
+        <module>allst-distribute</module>
+        <module>allst-jmh</module>
     </modules>
 
     <name>allst-multi</name>
