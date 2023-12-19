@@ -106,6 +106,11 @@ pref stat -e cpu-clock,task-clock,cs,cache-references,cache-misses java java类
 3、在Java 8中，还可以使用Java Mission Control（JMC）工具来监视Java线
 ```
 
+# 多线程
+```text
+
+```
+
 # Synchronized
 ```text
 在应用Sychronized关键字时需要把握如下注意点：
