@@ -22,10 +22,12 @@ public class ThreadCase implements Runnable {
     public synchronized void run() {
         count--;
         System.out.println(Thread.currentThread().getName() + " count = " + count);
+        System.out.println("Current Thread id is : " +Thread.currentThread().getId());
+        System.out.println("Current Thread priority is : " +Thread.currentThread().getPriority());
     }
 
     /**
-     * 运行结构可能会各不相同, 原因是线程的执行过程中执行时长不一致, 加锁可以保证每个线程都是在上一线程执行完成并释放锁后获取的
+     * 运行结果可能会各不相同, 原因是线程的执行过程中执行时长不一致, 加锁可以保证每个线程都是在上一线程执行完成并释放锁后获取的
      * @param args  参数
      */
     public static void main(String[] args) {
@@ -33,5 +35,6 @@ public class ThreadCase implements Runnable {
         for (int i = 0; i < 5; i++) {
             new Thread(t, "Thread" + i).start();
         }
+        System.out.println("count : " + t.count);
     }
 }

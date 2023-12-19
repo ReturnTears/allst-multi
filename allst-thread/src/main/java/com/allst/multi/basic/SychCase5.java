@@ -17,6 +17,7 @@ public class SychCase5 {
             e.printStackTrace();
         }
         mth2();
+        System.out.println("mth1 end");
     }
 
     synchronized void mth2() {
@@ -26,7 +27,7 @@ public class SychCase5 {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        System.out.println("mth2");
+        System.out.println("mth2 end");
     }
 
     public static void main(String[] args) {
