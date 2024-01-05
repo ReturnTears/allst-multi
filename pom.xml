@@ -15,6 +15,7 @@
         <module>allst-nginx</module>
         <module>allst-distribute</module>
         <module>allst-jmh</module>
+        <module>allst-async</module>
     </modules>
 
     <name>allst-multi</name>

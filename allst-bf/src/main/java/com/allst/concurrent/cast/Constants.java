@@ -6,6 +6,6 @@ package com.allst.concurrent.cast;
  */
 public class Constants {
 
-    public static final String MP4_FULL_PATH = "E:\\TestData\\test\\log.txt";
+    public static final String MP4_FULL_PATH = "E:\\TestData\\file\\inp.txt";
 
 }
