@@ -1,8 +1,10 @@
 package com.allst.async.chapter2;
 
 /**
- * 手动同步编码
- *
+ * 手动编写异步编码
+ * 该方式存在的问题：
+ *  1、每当执行异步任务时，会直接创建一个Thread来执行异步任务
+ *  2、使用Thread执行的异步任务并没有返回值
  * @author Hutu
  * @since 2024-01-06 下午 09:27
  */

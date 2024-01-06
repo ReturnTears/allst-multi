@@ -1,7 +1,7 @@
 package com.allst.async.chapter2;
 
 /**
- * 手动同步编码
+ * 手动编写异步编码
  *
  * @author Hutu
  * @since 2024-01-06 下午 09:27
