@@ -1,6 +1,7 @@
 package com.allst.async.chapter3;
 
 import java.util.concurrent.*;
+import java.util.function.Consumer;
 import java.util.function.Supplier;
 
 /**
@@ -121,11 +122,47 @@ public class CompletableFutureRunAsyncCode {
         System.out.println(twoFuture.get());
     }
 
+    public static void thenAccept() throws ExecutionException, InterruptedException {
+        // 创建异步任务，并返回future
+        CompletableFuture<String> oneFuture = CompletableFuture.supplyAsync(new Supplier<String>() {
+            @Override
+            public String get() {
+                try {
+                    // 模拟任务计算时长
+                    Thread.sleep(2000);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+                // 返回异步计算结果
+                return "Hello oneFuture";
+            }
+        });
+        CompletableFuture<Void> twoFuture = oneFuture.thenAccept(new Consumer<String>() {
+            @Override
+            public void accept(String s) {
+                // 对oneFuture返回的结果进行加工
+                try {
+                    String result = oneFuture.get();
+                    System.out.println("oneFuture result : " + result);
+                    Thread.sleep(1000);
+                } catch (InterruptedException | ExecutionException e) {
+                    throw new RuntimeException(e);
+                }
+                System.out.println(Thread.currentThread().getName());
+                System.out.println("--- after oneFuture over doSomething ---");
+            }
+        });
+
+        // 同步等待twoFuture对应的任务完成，返回结果固定为null
+        System.out.println(twoFuture.get());
+    }
+
     public static void main(String[] args) throws ExecutionException, InterruptedException {
         // runAsync();
         // runAsyncWithBizExecutor();
         // supplyAsync();
         // supplyAsyncWithBizExecutor();
-        thenRun();
+        // thenRun();
+        thenAccept();
     }
 }
