@@ -121,6 +121,11 @@ AQS( Abstract Queued Synchronizer )是一个抽象的队列同步器,通过维�
 
 >> 类图中outcome是任务运行的结果，可以通过get系列方法来获取该结果。另外，outcome这里没有被修饰为volatile，是因为变量state已经被volatile修饰了，这里是借用volatile的内存语义来保证写入outcome时会把值刷新到主内存，读取时会从主内存读取，从而避免多线程下内存不可见问题
 
+◆ 3.4 JDK8Stream & CompletableFuture
+```text
+
+```
+
 ◆ 8.3 高性能线程间消息传递库—Disruptor
 
 >> Disruptor是一个高性能的线程间消息传递库，它源于LMAX对并发性、性能和非阻塞算法的研究，如今构成了其Exchange基础架构的核心部分
