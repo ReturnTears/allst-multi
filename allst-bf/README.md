@@ -175,3 +175,68 @@ volatile 变量规则
     乐观锁需要操作和冲突检测这两个步骤具备原子性，这里就不能再使用互斥同步来保证了，只能靠硬件来完成。硬件支持的原子性操作最典型的是: 比较并交换(Compare-and-Swap，CAS)。
     CAS 指令需要有 3 个操作数，分别是内存地址 V、旧的预期值 A 和新值 B。当执行操作时，只有当 V 的值等于 A，才将 V 的值更新为 B。
 ```
+
+## Java原子类
+
+Java中的原子类位于`java.util.concurrent.atomic`包下，它们提供了一种线程安全的、能够确保原子性操作的数据类型。以下是一些主要的原子类：
+
+1. **基本类型原子类**：
+   - `AtomicInteger`：用于对整数进行原子操作。
+   - `AtomicLong`：用于对长整型（64位）进行原子操作。
+   - `AtomicBoolean`：用于对布尔值进行原子操作。
+
+2. **数组类型原子类**：
+   - `AtomicIntegerArray`：用于对整数数组进行原子操作。
+   - `AtomicLongArray`：用于对长整型数组进行原子操作。
+   - `AtomicReferenceArray<E>`：用于对引用类型数组进行原子操作。
+
+3. **引用类型原子类**：
+   - `AtomicReference<V>`：用于对任意引用类型对象进行原子更新。
+   - `AtomicStampedReference<V>`：带有版本号或“戳记”的原子引用，可以解决ABA问题。
+   - `AtomicMarkableReference<V>`：带有标记位的原子引用，可用于多状态同步场景。
+
+4. **字段更新原子类**：
+   - `AtomicIntegerFieldUpdater<T>`：用于原子地更新指定类中声明的整型字段。
+   - `AtomicLongFieldUpdater<T>`：用于原子地更新指定类中声明的长整型字段。
+   - `AtomicReferenceFieldUpdater<T, V>`：用于原子地更新指定类中声明的引用类型字段。
+
+这些原子类均利用了CAS（Compare and Swap / Compare and Set）机制来实现无锁编程，从而在高并发环境下能有效地执行非阻塞式的原子操作。
+
+## Java线程相关的类
+
+Java中涉及线程相关的类主要包括以下几种：
+
+1. **java.lang.Thread**
+    - 这是Java中最基础的线程实现类，通过继承Thread类或实现Runnable接口创建线程。它提供了构造函数、start()方法用于启动线程，以及一些控制线程的方法如join(), sleep(), setName(), setPriority()等。
+
+2. **java.lang.Runnable**
+    - Runnable是一个接口，它只包含一个run()方法，实现了Runnable接口的类可以被Thread类包装并在新的线程中运行。这种方式允许用户定义的任务类同时继承其他类。
+
+3. **java.util.concurrent.atomic包下的原子类**
+    - 包括AtomicInteger, AtomicLong, AtomicIntegerArray, AtomicLongArray等，这些类提供了一种在高并发环境下进行原子操作的数据类型，确保了多线程环境下的数据一致性。
+
+4. **java.util.concurrent.locks包下的锁与同步器**
+    - ReentrantLock：可重入锁，提供了比内置synchronized关键字更灵活的锁定机制。
+    - Condition：与ReentrantLock配合使用的条件队列，用于线程间的协作和通知机制。
+    - Semaphore（信号量）：用于控制同时访问特定资源的线程数量。
+    - CountDownLatch：计数器门闩，等待多个线程完成后再执行后续动作。
+    - CyclicBarrier：循环栅栏，让一组线程等待至所有线程都到达某个屏障点再继续执行。
+
+5. **java.util.concurrent.ExecutorService 和 Executors**
+    - ExecutorService 是一个接口，它是线程池的核心接口，用于管理和控制异步任务的执行。
+    - Executors 类提供了工厂方法来创建不同类型的ExecutorService，例如单线程、固定大小线程池、可缓存线程池等。
+
+6. **java.util.concurrent.Future 和 FutureTask**
+    - Future 接口表示异步计算的结果，可用于获取线程执行完毕后的结果。
+    - FutureTask 是Future接口的实现类，同时扩展了Runnable接口，因此可以作为线程的任务并能返回结果。
+
+7. **java.util.concurrent.ConcurrentHashMap**
+    - 线程安全的哈希表实现，适合于并发环境中使用。
+
+8. **java.util.concurrent.ConcurrentLinkedQueue**
+    - 高效、线程安全的无界链表队列。
+
+9. **ThreadLocal**
+    - 提供线程局部变量，每个线程都有该变量的一个副本，不会影响其他线程中的副本值，常用于解决多线程间的数据隔离问题。
+
+以上都是Java编程语言中与线程密切相关的类，它们共同构成了Java强大的多线程支持框架。
