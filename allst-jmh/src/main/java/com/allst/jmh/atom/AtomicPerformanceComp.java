@@ -1,4 +1,4 @@
-package com.allst.concurrent.atomic;
+package com.allst.jmh.atom;
 
 import org.openjdk.jmh.annotations.*;
 import org.openjdk.jmh.profile.StackProfiler;

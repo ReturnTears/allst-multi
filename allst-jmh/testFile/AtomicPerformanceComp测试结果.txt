@@ -1,0 +1,257 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ----------------------< com.allst.jmh:allst-jmh >-----------------------
+[INFO] Building allst-jmh 2.2.2.RELEASE
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- exec-maven-plugin:1.6.0:exec (default-cli) @ allst-jmh ---
+# JMH version: 1.36
+# VM version: JDK 1.8.0_144, Java HotSpot(TM) 64-Bit Server VM, 25.144-b01
+# VM invoker: D:\Program Files\Java\jdk1.8.0_144\jre\bin\java.exe
+# VM options: <none>
+# Blackhole mode: full + dont-inline hint (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 10 iterations, 10 s each
+# Measurement: 10 iterations, 10 s each
+# Timeout: 10 s per iteration, ***WARNING: The timeout might be too low!***
+# Threads: 10 threads, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: com.allst.jmh.atom.AtomicPerformanceComp.atomic
+
+# Run progress: 0.00% complete, ETA 00:10:00
+# Fork: 1 of 1
+# Warmup Iteration   1: 0.200 ��(99.9%) 0.007 us/op
+# Warmup Iteration   2: 0.203 ��(99.9%) 0.006 us/op
+# Warmup Iteration   3: 0.204 ��(99.9%) 0.008 us/op
+# Warmup Iteration   4: 0.202 ��(99.9%) 0.013 us/op
+# Warmup Iteration   5: 0.203 ��(99.9%) 0.009 us/op
+# Warmup Iteration   6: 0.202 ��(99.9%) 0.011 us/op
+# Warmup Iteration   7: 0.203 ��(99.9%) 0.008 us/op
+# Warmup Iteration   8: 0.204 ��(99.9%) 0.007 us/op
+# Warmup Iteration   9: 0.205 ��(99.9%) 0.007 us/op
+# Warmup Iteration  10: 0.203 ��(99.9%) 0.008 us/op
+Iteration   1: 0.204 ��(99.9%) 0.009 us/op
+                 ��stack: <delayed till summary>
+
+Iteration   2: 0.203 ��(99.9%) 0.009 us/op
+                 ��stack: <delayed till summary>
+
+Iteration   3: 0.204 ��(99.9%) 0.005 us/op
+                 ��stack: <delayed till summary>
+
+Iteration   4: 0.204 ��(99.9%) 0.009 us/op
+                 ��stack: <delayed till summary>
+
+Iteration   5: 0.203 ��(99.9%) 0.009 us/op
+                 ��stack: <delayed till summary>
+
+Iteration   6: 0.203 ��(99.9%) 0.009 us/op
+                 ��stack: <delayed till summary>
+
+Iteration   7: 0.201 ��(99.9%) 0.010 us/op
+                 ��stack: <delayed till summary>
+
+Iteration   8: 0.202 ��(99.9%) 0.006 us/op
+                 ��stack: <delayed till summary>
+
+Iteration   9: 0.200 ��(99.9%) 0.013 us/op
+                 ��stack: <delayed till summary>
+
+Iteration  10: 0.201 ��(99.9%) 0.009 us/op
+                 ��stack: <delayed till summary>
+
+
+
+Result "com.allst.jmh.atom.AtomicPerformanceComp.atomic":
+  0.203 ��(99.9%) 0.002 us/op [Average]
+  (min, avg, max) = (0.200, 0.203, 0.204), stdev = 0.001
+  CI (99.9%): [0.200, 0.205] (assumes normal distribution)
+
+Secondary result "com.allst.jmh.atom.AtomicPerformanceComp.atomic:��stack":
+Stack profiler:
+
+....[Thread state distributions]....................................................................
+ 99.9%         RUNNABLE
+
+....[Thread state: RUNNABLE]........................................................................
+ 99.4%  99.5% com.allst.jmh.atom.jmh_generated.AtomicPerformanceComp_atomic_jmhTest.atomicIntegerInc_avgt_jmhStub
+  0.5%   0.5% com.allst.jmh.atom.jmh_generated.AtomicPerformanceComp_atomic_jmhTest.atomic_AverageTime
+  0.0%   0.0% java.util.concurrent.CountDownLatch$Sync.tryReleaseShared
+  0.0%   0.0% sun.misc.Unsafe.park
+
+
+
+# JMH version: 1.36
+# VM version: JDK 1.8.0_144, Java HotSpot(TM) 64-Bit Server VM, 25.144-b01
+# VM invoker: D:\Program Files\Java\jdk1.8.0_144\jre\bin\java.exe
+# VM options: <none>
+# Blackhole mode: full + dont-inline hint (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 10 iterations, 10 s each
+# Measurement: 10 iterations, 10 s each
+# Timeout: 10 s per iteration, ***WARNING: The timeout might be too low!***
+# Threads: 10 threads, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: com.allst.jmh.atom.AtomicPerformanceComp.lock
+
+# Run progress: 33.33% complete, ETA 00:06:51
+# Fork: 1 of 1
+# Warmup Iteration   1: 0.438 ��(99.9%) 0.024 us/op
+# Warmup Iteration   2: 0.433 ��(99.9%) 0.022 us/op
+# Warmup Iteration   3: 0.390 ��(99.9%) 0.036 us/op
+# Warmup Iteration   4: 0.394 ��(99.9%) 0.076 us/op
+# Warmup Iteration   5: 0.380 ��(99.9%) 0.005 us/op
+# Warmup Iteration   6: 0.376 ��(99.9%) 0.035 us/op
+# Warmup Iteration   7: 0.352 ��(99.9%) 0.015 us/op
+# Warmup Iteration   8: 0.368 ��(99.9%) 0.006 us/op
+# Warmup Iteration   9: 0.370 ��(99.9%) 0.008 us/op
+# Warmup Iteration  10: 0.378 ��(99.9%) 0.005 us/op
+Iteration   1: 0.384 ��(99.9%) 0.035 us/op
+                 ��stack: <delayed till summary>
+
+Iteration   2: 0.383 ��(99.9%) 0.039 us/op
+                 ��stack: <delayed till summary>
+
+Iteration   3: 0.383 ��(99.9%) 0.037 us/op
+                 ��stack: <delayed till summary>
+
+Iteration   4: 0.377 ��(99.9%) 0.009 us/op
+                 ��stack: <delayed till summary>
+
+Iteration   5: 0.378 ��(99.9%) 0.006 us/op
+                 ��stack: <delayed till summary>
+
+Iteration   6: 0.383 ��(99.9%) 0.038 us/op
+                 ��stack: <delayed till summary>
+
+Iteration   7: 0.383 ��(99.9%) 0.038 us/op
+                 ��stack: <delayed till summary>
+
+Iteration   8: 0.383 ��(99.9%) 0.037 us/op
+                 ��stack: <delayed till summary>
+
+Iteration   9: 0.382 ��(99.9%) 0.038 us/op
+                 ��stack: <delayed till summary>
+
+Iteration  10: 0.383 ��(99.9%) 0.036 us/op
+                 ��stack: <delayed till summary>
+
+
+
+Result "com.allst.jmh.atom.AtomicPerformanceComp.lock":
+  0.382 ��(99.9%) 0.004 us/op [Average]
+  (min, avg, max) = (0.377, 0.382, 0.384), stdev = 0.002
+  CI (99.9%): [0.378, 0.385] (assumes normal distribution)
+
+Secondary result "com.allst.jmh.atom.AtomicPerformanceComp.lock:��stack":
+Stack profiler:
+
+....[Thread state distributions]....................................................................
+ 87.5%         WAITING
+ 12.5%         RUNNABLE
+
+....[Thread state: WAITING].........................................................................
+ 87.5% 100.0% sun.misc.Unsafe.park
+
+....[Thread state: RUNNABLE]........................................................................
+  8.6%  69.1% com.allst.jmh.atom.jmh_generated.AtomicPerformanceComp_lock_jmhTest.lockInc_avgt_jmhStub
+  2.5%  20.1% sun.misc.Unsafe.unpark
+  1.3%  10.6% sun.misc.Unsafe.park
+  0.0%   0.1% java.util.concurrent.locks.AbstractQueuedSynchronizer.acquire
+  0.0%   0.0% java.util.concurrent.locks.AbstractQueuedSynchronizer.acquireQueued
+  0.0%   0.0% java.util.concurrent.locks.AbstractQueuedSynchronizer.unparkSuccessor
+  0.0%   0.0% java.util.concurrent.locks.AbstractQueuedSynchronizer.addWaiter
+
+
+
+# JMH version: 1.36
+# VM version: JDK 1.8.0_144, Java HotSpot(TM) 64-Bit Server VM, 25.144-b01
+# VM invoker: D:\Program Files\Java\jdk1.8.0_144\jre\bin\java.exe
+# VM options: <none>
+# Blackhole mode: full + dont-inline hint (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 10 iterations, 10 s each
+# Measurement: 10 iterations, 10 s each
+# Timeout: 10 s per iteration, ***WARNING: The timeout might be too low!***
+# Threads: 10 threads, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: com.allst.jmh.atom.AtomicPerformanceComp.sync
+
+# Run progress: 66.67% complete, ETA 00:03:23
+# Fork: 1 of 1
+# Warmup Iteration   1: 0.461 ��(99.9%) 0.015 us/op
+# Warmup Iteration   2: 0.464 ��(99.9%) 0.026 us/op
+# Warmup Iteration   3: 0.477 ��(99.9%) 0.015 us/op
+# Warmup Iteration   4: 0.466 ��(99.9%) 0.021 us/op
+# Warmup Iteration   5: 0.468 ��(99.9%) 0.025 us/op
+# Warmup Iteration   6: 0.464 ��(99.9%) 0.023 us/op
+# Warmup Iteration   7: 0.470 ��(99.9%) 0.016 us/op
+# Warmup Iteration   8: 0.455 ��(99.9%) 0.021 us/op
+# Warmup Iteration   9: 0.455 ��(99.9%) 0.017 us/op
+# Warmup Iteration  10: 0.456 ��(99.9%) 0.018 us/op
+Iteration   1: 0.455 ��(99.9%) 0.015 us/op
+                 ��stack: <delayed till summary>
+
+Iteration   2: 0.458 ��(99.9%) 0.025 us/op
+                 ��stack: <delayed till summary>
+
+Iteration   3: 0.460 ��(99.9%) 0.024 us/op
+                 ��stack: <delayed till summary>
+
+Iteration   4: 0.455 ��(99.9%) 0.020 us/op
+                 ��stack: <delayed till summary>
+
+Iteration   5: 0.456 ��(99.9%) 0.022 us/op
+                 ��stack: <delayed till summary>
+
+Iteration   6: 0.455 ��(99.9%) 0.027 us/op
+                 ��stack: <delayed till summary>
+
+Iteration   7: 0.448 ��(99.9%) 0.005 us/op
+                 ��stack: <delayed till summary>
+
+Iteration   8: 0.448 ��(99.9%) 0.004 us/op
+                 ��stack: <delayed till summary>
+
+Iteration   9: 0.449 ��(99.9%) 0.019 us/op
+                 ��stack: <delayed till summary>
+
+Iteration  10: 0.448 ��(99.9%) 0.009 us/op
+                 ��stack: <delayed till summary>
+
+
+
+Result "com.allst.jmh.atom.AtomicPerformanceComp.sync":
+  0.453 ��(99.9%) 0.007 us/op [Average]
+  (min, avg, max) = (0.448, 0.453, 0.460), stdev = 0.004
+  CI (99.9%): [0.447, 0.460] (assumes normal distribution)
+
+Secondary result "com.allst.jmh.atom.AtomicPerformanceComp.sync:��stack":
+Stack profiler:
+
+....[Thread state distributions]....................................................................
+ 77.9%         BLOCKED
+ 22.0%         RUNNABLE
+
+....[Thread state: BLOCKED].........................................................................
+ 77.9% 100.0% com.allst.jmh.atom.AtomicPerformanceComp$IntMonitor.synInc
+
+....[Thread state: RUNNABLE]........................................................................
+ 19.7%  89.3% com.allst.jmh.atom.AtomicPerformanceComp$IntMonitor.synInc
+  2.4%  10.7% com.allst.jmh.atom.jmh_generated.AtomicPerformanceComp_sync_jmhTest.syncInc_avgt_jmhStub
+
+
+
+# Run complete. Total time: 00:10:09
+
+REMEMBER: The numbers below are just data. To gain reusable insights, you need to follow up on
+why the numbers are the way they are. Use profilers (see -prof, -lprof), design factorial
+experiments, perform baseline and negative tests that provide experimental control, make sure
+the benchmarking environment is safe on JVM/OS/HW level, ask for reviews from the domain experts.
+Do not assume the numbers tell you what you want them to tell.
+
+Benchmark                            Mode  Cnt  Score   Error  Units
+AtomicPerformanceComp.atomic         avgt   10  0.203 �� 0.002  us/op
+AtomicPerformanceComp.atomic:��stack  avgt         NaN            ---
+AtomicPerformanceComp.lock           avgt   10  0.382 �� 0.004  us/op
+AtomicPerformanceComp.lock:��stack    avgt         NaN            ---
+AtomicPerformanceComp.sync           avgt   10  0.453 �� 0.007  us/op
+AtomicPerformanceComp.sync:��stack    avgt         NaN            ---
+
