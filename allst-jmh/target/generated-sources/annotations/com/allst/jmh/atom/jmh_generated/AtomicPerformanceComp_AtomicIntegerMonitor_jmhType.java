@@ -1,0 +1,4 @@
+package com.allst.jmh.atom.jmh_generated;
+public class AtomicPerformanceComp_AtomicIntegerMonitor_jmhType extends AtomicPerformanceComp_AtomicIntegerMonitor_jmhType_B3 {
+}
+
