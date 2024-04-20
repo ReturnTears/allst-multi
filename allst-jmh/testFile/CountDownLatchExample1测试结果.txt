@@ -1,0 +1,31 @@
+1-> start calculate price.
+2-> start calculate price.
+3-> start calculate price.
+4-> start calculate price.
+5-> start calculate price.
+6-> start calculate price.
+7-> start calculate price.
+8-> start calculate price.
+9-> start calculate price.
+5-> price calculate completed.
+7-> price calculate completed.
+10-> start calculate price.
+6-> price calculate completed.
+8-> price calculate completed.
+4-> price calculate completed.
+9-> price calculate completed.
+3-> price calculate completed.
+1-> price calculate completed.
+10-> price calculate completed.
+2-> price calculate completed.
+all of prices calculate finished.
+ProductPrice{prodID=1, price=0.71}
+ProductPrice{prodID=2, price=1.8}
+ProductPrice{prodID=3, price=2.13}
+ProductPrice{prodID=4, price=3.6}
+ProductPrice{prodID=5, price=3.55}
+ProductPrice{prodID=6, price=5.4}
+ProductPrice{prodID=7, price=4.97}
+ProductPrice{prodID=8, price=7.2}
+ProductPrice{prodID=9, price=6.39}
+ProductPrice{prodID=10, price=9.0}
