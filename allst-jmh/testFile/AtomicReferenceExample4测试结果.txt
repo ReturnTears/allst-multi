@@ -1,0 +1,267 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ----------------------< com.allst.jmh:allst-jmh >-----------------------
+[INFO] Building allst-jmh 2.2.2.RELEASE
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- exec-maven-plugin:1.6.0:exec (default-cli) @ allst-jmh ---
+# JMH version: 1.36
+# VM version: JDK 1.8.0_144, Java HotSpot(TM) 64-Bit Server VM, 25.144-b01
+# VM invoker: D:\Program Files\Java\jdk1.8.0_144\jre\bin\java.exe
+# VM options: <none>
+# Blackhole mode: full + dont-inline hint (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 20 iterations, 10 s each
+# Measurement: 20 iterations, 10 s each
+# Timeout: 10 s per iteration, ***WARNING: The timeout might be too low!***
+# Threads: 10 threads, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: com.allst.jmh.atom.AtomicReferenceExample4.cas
+
+# Run progress: 0.00% complete, ETA 00:13:20
+# Fork: 1 of 1
+# Warmup Iteration   1: 0.327 ��(99.9%) 0.022 us/op
+# Warmup Iteration   2: 0.325 ��(99.9%) 0.026 us/op
+# Warmup Iteration   3: 0.330 ��(99.9%) 0.021 us/op
+# Warmup Iteration   4: 0.329 ��(99.9%) 0.014 us/op
+# Warmup Iteration   5: 0.335 ��(99.9%) 0.008 us/op
+# Warmup Iteration   6: 0.330 ��(99.9%) 0.019 us/op
+# Warmup Iteration   7: 0.327 ��(99.9%) 0.022 us/op
+# Warmup Iteration   8: 0.329 ��(99.9%) 0.006 us/op
+# Warmup Iteration   9: 0.333 ��(99.9%) 0.018 us/op
+# Warmup Iteration  10: 0.330 ��(99.9%) 0.014 us/op
+# Warmup Iteration  11: 0.318 ��(99.9%) 0.025 us/op
+# Warmup Iteration  12: 0.314 ��(99.9%) 0.014 us/op
+# Warmup Iteration  13: 0.341 ��(99.9%) 0.017 us/op
+# Warmup Iteration  14: 0.339 ��(99.9%) 0.028 us/op
+# Warmup Iteration  15: 0.331 ��(99.9%) 0.027 us/op
+# Warmup Iteration  16: 0.344 ��(99.9%) 0.027 us/op
+# Warmup Iteration  17: 0.344 ��(99.9%) 0.033 us/op
+# Warmup Iteration  18: 0.342 ��(99.9%) 0.031 us/op
+# Warmup Iteration  19: 0.343 ��(99.9%) 0.036 us/op
+# Warmup Iteration  20: 0.343 ��(99.9%) 0.037 us/op
+Iteration   1: 0.343 ��(99.9%) 0.032 us/op
+                 ��stack: <delayed till summary>
+
+Iteration   2: 0.342 ��(99.9%) 0.026 us/op
+                 ��stack: <delayed till summary>
+
+Iteration   3: 0.343 ��(99.9%) 0.034 us/op
+                 ��stack: <delayed till summary>
+
+Iteration   4: 0.343 ��(99.9%) 0.030 us/op
+                 ��stack: <delayed till summary>
+
+Iteration   5: 0.341 ��(99.9%) 0.035 us/op
+                 ��stack: <delayed till summary>
+
+Iteration   6: 0.342 ��(99.9%) 0.021 us/op
+                 ��stack: <delayed till summary>
+
+Iteration   7: 0.342 ��(99.9%) 0.026 us/op
+                 ��stack: <delayed till summary>
+
+Iteration   8: 0.340 ��(99.9%) 0.029 us/op
+                 ��stack: <delayed till summary>
+
+Iteration   9: 0.345 ��(99.9%) 0.028 us/op
+                 ��stack: <delayed till summary>
+
+Iteration  10: 0.343 ��(99.9%) 0.029 us/op
+                 ��stack: <delayed till summary>
+
+Iteration  11: 0.344 ��(99.9%) 0.030 us/op
+                 ��stack: <delayed till summary>
+
+Iteration  12: 0.342 ��(99.9%) 0.031 us/op
+                 ��stack: <delayed till summary>
+
+Iteration  13: 0.342 ��(99.9%) 0.030 us/op
+                 ��stack: <delayed till summary>
+
+Iteration  14: 0.343 ��(99.9%) 0.025 us/op
+                 ��stack: <delayed till summary>
+
+Iteration  15: 0.344 ��(99.9%) 0.046 us/op
+                 ��stack: <delayed till summary>
+
+Iteration  16: 0.344 ��(99.9%) 0.029 us/op
+                 ��stack: <delayed till summary>
+
+Iteration  17: 0.343 ��(99.9%) 0.031 us/op
+                 ��stack: <delayed till summary>
+
+Iteration  18: 0.340 ��(99.9%) 0.029 us/op
+                 ��stack: <delayed till summary>
+
+Iteration  19: 0.344 ��(99.9%) 0.025 us/op
+                 ��stack: <delayed till summary>
+
+Iteration  20: 0.340 ��(99.9%) 0.009 us/op
+                 ��stack: <delayed till summary>
+
+
+
+Result "com.allst.jmh.atom.AtomicReferenceExample4.cas":
+  0.343 ��(99.9%) 0.001 us/op [Average]
+  (min, avg, max) = (0.340, 0.343, 0.345), stdev = 0.001
+  CI (99.9%): [0.341, 0.344] (assumes normal distribution)
+
+Secondary result "com.allst.jmh.atom.AtomicReferenceExample4.cas:��stack":
+Stack profiler:
+
+....[Thread state distributions]....................................................................
+ 99.5%         RUNNABLE
+  0.4%         WAITING
+  0.1%         BLOCKED
+
+....[Thread state: RUNNABLE]........................................................................
+ 91.2%  91.7% com.allst.jmh.atom.jmh_generated.AtomicReferenceExample4_cas_jmhTest.casInc_avgt_jmhStub
+  7.3%   7.3% com.allst.jmh.atom.AtomicReferenceExample4$AtomicReferenceRace.casInc
+  1.0%   1.0% com.allst.jmh.atom.jmh_generated.AtomicReferenceExample4_cas_jmhTest.cas_AverageTime
+  0.0%   0.0% sun.misc.Unsafe.unpark
+  0.0%   0.0% java.lang.Thread.isInterrupted
+
+....[Thread state: WAITING].........................................................................
+  0.4% 100.0% sun.misc.Unsafe.park
+
+....[Thread state: BLOCKED].........................................................................
+  0.1% 100.0% com.allst.jmh.atom.AtomicReferenceExample4$AtomicReferenceRace.casInc
+
+
+
+# JMH version: 1.36
+# VM version: JDK 1.8.0_144, Java HotSpot(TM) 64-Bit Server VM, 25.144-b01
+# VM invoker: D:\Program Files\Java\jdk1.8.0_144\jre\bin\java.exe
+# VM options: <none>
+# Blackhole mode: full + dont-inline hint (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 20 iterations, 10 s each
+# Measurement: 20 iterations, 10 s each
+# Timeout: 10 s per iteration, ***WARNING: The timeout might be too low!***
+# Threads: 10 threads, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: com.allst.jmh.atom.AtomicReferenceExample4.sync
+
+# Run progress: 50.00% complete, ETA 00:06:51
+# Fork: 1 of 1
+# Warmup Iteration   1: 0.546 ��(99.9%) 0.013 us/op
+# Warmup Iteration   2: 0.524 ��(99.9%) 0.017 us/op
+# Warmup Iteration   3: 0.514 ��(99.9%) 0.020 us/op
+# Warmup Iteration   4: 0.514 ��(99.9%) 0.015 us/op
+# Warmup Iteration   5: 0.525 ��(99.9%) 0.012 us/op
+# Warmup Iteration   6: 0.518 ��(99.9%) 0.027 us/op
+# Warmup Iteration   7: 0.490 ��(99.9%) 0.014 us/op
+# Warmup Iteration   8: 0.485 ��(99.9%) 0.029 us/op
+# Warmup Iteration   9: 0.493 ��(99.9%) 0.016 us/op
+# Warmup Iteration  10: 0.499 ��(99.9%) 0.020 us/op
+# Warmup Iteration  11: 0.502 ��(99.9%) 0.019 us/op
+# Warmup Iteration  12: 0.505 ��(99.9%) 0.027 us/op
+# Warmup Iteration  13: 0.501 ��(99.9%) 0.018 us/op
+# Warmup Iteration  14: 0.494 ��(99.9%) 0.019 us/op
+# Warmup Iteration  15: 0.489 ��(99.9%) 0.038 us/op
+# Warmup Iteration  16: 0.494 ��(99.9%) 0.032 us/op
+# Warmup Iteration  17: 0.494 ��(99.9%) 0.030 us/op
+# Warmup Iteration  18: 0.491 ��(99.9%) 0.031 us/op
+# Warmup Iteration  19: 0.494 ��(99.9%) 0.035 us/op
+# Warmup Iteration  20: 0.495 ��(99.9%) 0.028 us/op
+Iteration   1: 0.485 ��(99.9%) 0.019 us/op
+                 ��stack: <delayed till summary>
+
+Iteration   2: 0.478 ��(99.9%) 0.019 us/op
+                 ��stack: <delayed till summary>
+
+Iteration   3: 0.478 ��(99.9%) 0.025 us/op
+                 ��stack: <delayed till summary>
+
+Iteration   4: 0.482 ��(99.9%) 0.014 us/op
+                 ��stack: <delayed till summary>
+
+Iteration   5: 0.483 ��(99.9%) 0.019 us/op
+                 ��stack: <delayed till summary>
+
+Iteration   6: 0.485 ��(99.9%) 0.025 us/op
+                 ��stack: <delayed till summary>
+
+Iteration   7: 0.485 ��(99.9%) 0.020 us/op
+                 ��stack: <delayed till summary>
+
+Iteration   8: 0.509 ��(99.9%) 0.024 us/op
+                 ��stack: <delayed till summary>
+
+Iteration   9: 0.503 ��(99.9%) 0.021 us/op
+                 ��stack: <delayed till summary>
+
+Iteration  10: 0.480 ��(99.9%) 0.025 us/op
+                 ��stack: <delayed till summary>
+
+Iteration  11: 0.486 ��(99.9%) 0.023 us/op
+                 ��stack: <delayed till summary>
+
+Iteration  12: 0.482 ��(99.9%) 0.016 us/op
+                 ��stack: <delayed till summary>
+
+Iteration  13: 0.481 ��(99.9%) 0.020 us/op
+                 ��stack: <delayed till summary>
+
+Iteration  14: 0.480 ��(99.9%) 0.022 us/op
+                 ��stack: <delayed till summary>
+
+Iteration  15: 0.480 ��(99.9%) 0.015 us/op
+                 ��stack: <delayed till summary>
+
+Iteration  16: 0.483 ��(99.9%) 0.022 us/op
+                 ��stack: <delayed till summary>
+
+Iteration  17: 0.477 ��(99.9%) 0.022 us/op
+                 ��stack: <delayed till summary>
+
+Iteration  18: 0.478 ��(99.9%) 0.023 us/op
+                 ��stack: <delayed till summary>
+
+Iteration  19: 0.480 ��(99.9%) 0.024 us/op
+                 ��stack: <delayed till summary>
+
+Iteration  20: 0.482 ��(99.9%) 0.031 us/op
+                 ��stack: <delayed till summary>
+
+
+
+Result "com.allst.jmh.atom.AtomicReferenceExample4.sync":
+  0.484 ��(99.9%) 0.007 us/op [Average]
+  (min, avg, max) = (0.477, 0.484, 0.509), stdev = 0.008
+  CI (99.9%): [0.477, 0.491] (assumes normal distribution)
+
+Secondary result "com.allst.jmh.atom.AtomicReferenceExample4.sync:��stack":
+Stack profiler:
+
+....[Thread state distributions]....................................................................
+ 78.3%         BLOCKED
+ 21.7%         RUNNABLE
+
+....[Thread state: BLOCKED].........................................................................
+ 78.3% 100.0% com.allst.jmh.atom.AtomicReferenceExample4$MonitorRace.syncInc
+
+....[Thread state: RUNNABLE]........................................................................
+ 16.8%  77.4% com.allst.jmh.atom.AtomicReferenceExample4$MonitorRace.syncInc
+  4.9%  22.6% com.allst.jmh.atom.jmh_generated.AtomicReferenceExample4_sync_jmhTest.syncInc_avgt_jmhStub
+
+
+
+# Run complete. Total time: 00:13:33
+
+REMEMBER: The numbers below are just data. To gain reusable insights, you need to follow up on
+why the numbers are the way they are. Use profilers (see -prof, -lprof), design factorial
+experiments, perform baseline and negative tests that provide experimental control, make sure
+the benchmarking environment is safe on JVM/OS/HW level, ask for reviews from the domain experts.
+Do not assume the numbers tell you what you want them to tell.
+
+Benchmark                            Mode  Cnt  Score   Error  Units
+AtomicReferenceExample4.cas          avgt   20  0.343 �� 0.001  us/op
+AtomicReferenceExample4.cas:��stack   avgt         NaN            ---
+AtomicReferenceExample4.sync         avgt   20  0.484 �� 0.007  us/op
+AtomicReferenceExample4.sync:��stack  avgt         NaN            ---
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  13:38 min
+[INFO] Finished at: 2024-04-19T22:30:38+08:00
+[INFO] ------------------------------------------------------------------------
