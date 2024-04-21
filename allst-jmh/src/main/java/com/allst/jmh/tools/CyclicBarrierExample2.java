@@ -17,6 +17,8 @@ public class CyclicBarrierExample2 {
         for (int i = 0; i < 10; i++) {
             // 定义游客线程，传入游客编号和barrier
             new Thread(new Tourist(i, barrier)).start();
+            int numberWaiting = barrier.getNumberWaiting();
+            System.out.println("numberWaiting : " + numberWaiting);
         }
         // 主线程也进入阻塞，等待所有游客都上了旅游大巴
         barrier.await();

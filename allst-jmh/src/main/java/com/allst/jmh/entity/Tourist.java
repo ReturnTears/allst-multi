@@ -21,8 +21,6 @@ public class Tourist implements Runnable {
 
     @Override
     public void run() {
-        int parties = barrier.getParties();
-        //System.out.println("parties : " + parties);
         System.out.printf("Tourist:%d by bus\n", touristID);
         // 模拟乘客上车的时间开销
         this.spendSeveralSeconds();
