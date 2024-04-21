@@ -1,0 +1,42 @@
+Tourist:0 by bus
+Tourist:9 by bus
+Tourist:8 by bus
+Tourist:7 by bus
+Tourist:6 by bus
+Tourist:5 by bus
+Tourist:4 by bus
+Tourist:3 by bus
+Tourist:2 by bus
+Tourist:1 by bus
+Tourist:7 Get on the bus, and wait other people reached.
+Tourist:9 Get on the bus, and wait other people reached.
+Tourist:0 Get on the bus, and wait other people reached.
+Tourist:6 Get on the bus, and wait other people reached.
+Tourist:3 Get on the bus, and wait other people reached.
+Tourist:5 Get on the bus, and wait other people reached.
+Tourist:8 Get on the bus, and wait other people reached.
+Tourist:4 Get on the bus, and wait other people reached.
+Tourist:2 Get on the bus, and wait other people reached.
+Tourist:1 Get on the bus, and wait other people reached.
+Tourist:1 arrival the destination
+Tourist:0 arrival the destination
+Tourist:9 arrival the destination
+Tour Guider:all of Tourist get on the bus.
+Tourist:7 arrival the destination
+Tourist:2 arrival the destination
+Tourist:4 arrival the destination
+Tourist:8 arrival the destination
+Tourist:5 arrival the destination
+Tourist:3 arrival the destination
+Tourist:6 arrival the destination
+Tourist:5 Get off the bus, and wait other people get off.
+Tourist:1 Get off the bus, and wait other people get off.
+Tourist:7 Get off the bus, and wait other people get off.
+Tourist:3 Get off the bus, and wait other people get off.
+Tourist:4 Get off the bus, and wait other people get off.
+Tourist:9 Get off the bus, and wait other people get off.
+Tourist:8 Get off the bus, and wait other people get off.
+Tourist:6 Get off the bus, and wait other people get off.
+Tourist:2 Get off the bus, and wait other people get off.
+Tourist:0 Get off the bus, and wait other people get off.
+Tour Guider:all of Tourist get off the bus.
