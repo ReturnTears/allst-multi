@@ -1,0 +1,6 @@
+Thread[T1,5,main] : thread t1 start.
+Thread[T2,5,main] : thread t2 start.
+Thread[T1,5,main] : thread2 exchange data is : thread t2 exchange data
+Thread[T2,5,main] : thread1 exchange data is : thread t1 exchange data
+Thread[T1,5,main] : thread t1 end
+Thread[T2,5,main] : thread t2 end.

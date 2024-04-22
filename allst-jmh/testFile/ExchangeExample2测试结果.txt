@@ -1,0 +1,10 @@
+Thread[Consumer,5,main] received data: BCD
+Thread[Consumer,5,main] received data: EFG
+Thread[Consumer,5,main] received data: HIJ
+Thread[Consumer,5,main] received data: KLM
+Thread[Consumer,5,main] received data: NOP
+Thread[Consumer,5,main] received data: QRS
+Thread[Consumer,5,main] received data: TUV
+Thread[main,5,main]will be closed.
+Thread[Consumer,5,main] received the close signal.
+Thread[main,5,main]will be closed.
