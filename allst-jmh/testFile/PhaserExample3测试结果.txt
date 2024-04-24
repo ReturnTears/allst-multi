@@ -1,0 +1,11 @@
+Wed Apr 24 22:19:11 CST 2024: all of sub task completed work.
+Wed Apr 24 22:19:11 CST 2024:Thread[T-8,5,main] completed the work.
+Wed Apr 24 22:19:11 CST 2024:Thread[T-5,5,main] completed the work.
+Wed Apr 24 22:19:11 CST 2024:Thread[T-2,5,main] completed the work.
+Wed Apr 24 22:19:11 CST 2024:Thread[T-7,5,main] completed the work.
+Wed Apr 24 22:19:11 CST 2024:Thread[T-4,5,main] completed the work.
+Wed Apr 24 22:19:11 CST 2024:Thread[T-0,5,main] completed the work.
+Wed Apr 24 22:19:11 CST 2024:Thread[T-9,5,main] completed the work.
+Wed Apr 24 22:19:11 CST 2024:Thread[T-3,5,main] completed the work.
+Wed Apr 24 22:19:11 CST 2024:Thread[T-1,5,main] completed the work.
+Wed Apr 24 22:19:11 CST 2024:Thread[T-6,5,main] completed the work.
