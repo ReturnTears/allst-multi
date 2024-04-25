@@ -19,10 +19,10 @@ import java.util.concurrent.locks.ReentrantLock;
  * @since 2024-04-25 下午 09:52
  */
 
-@Measurement(iterations = 10)
+/*@Measurement(iterations = 10)
 @Warmup(iterations = 10)
 @BenchmarkMode(Mode.AverageTime)
-@OutputTimeUnit(TimeUnit.MICROSECONDS)
+@OutputTimeUnit(TimeUnit.MICROSECONDS)*/
 public class ReentrantLockExample5 {
 
     public static class Test {
@@ -53,34 +53,34 @@ public class ReentrantLockExample5 {
     }
 
     // 10个线程进行测试
-    @GroupThreads(10)
+    /*@GroupThreads(10)
     @Group("base")
     @Benchmark
     public void base(Test test, Blackhole hole) {
         hole.consume(test.baseMethod());
-    }
+    }*/
 
     // 10个线程进行测试
-    @GroupThreads(10)
+    /*@GroupThreads(10)
     @Group("lock")
     @Benchmark
     public void testLockMethod(Test test, Blackhole hole) {
         hole.consume(test.lockMethod());
-    }
+    }*/
 
     // 10个线程进行测试
-    @GroupThreads(10)
+    /*@GroupThreads(10)
     @Group("sync")
     @Benchmark
     public void testSyncMethod(Test test, Blackhole hole) {
         hole.consume(test.syncMethod());
-    }
+    }*/
 
-    public static void main(String[] args) throws RunnerException {
+    /*public static void main(String[] args) throws RunnerException {
         Options opts = new OptionsBuilder()
                 .include(ReentrantLockExample5.class.getSimpleName())
                 .forks(1)
                 .build();
         new Runner(opts).run();
-    }
+    }*/
 }
