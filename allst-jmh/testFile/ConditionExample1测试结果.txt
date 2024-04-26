@@ -1,0 +1,23 @@
+read data is : 0
+write data is : 77
+read data is : 77
+write data is : 7
+read data is : 7
+write data is : 74
+read data is : 74
+write data is : 12
+read data is : 12
+write data is : 69
+read data is : 69
+write data is : 96
+read data is : 96
+write data is : 41
+read data is : 41
+write data is : 98
+read data is : 98
+write data is : 89
+read data is : 89
+write data is : 66
+read data is : 66
+write data is : 97
+..........
