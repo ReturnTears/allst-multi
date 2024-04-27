@@ -1,0 +1,11 @@
+rate = 1/0.5
+Thread[Thread-0,5,main]: elapsed seconds: 0.0
+Thread[Thread-1,5,main]: elapsed seconds: 1.89055
+Thread[Thread-2,5,main]: elapsed seconds: 3.890508
+Thread[Thread-3,5,main]: elapsed seconds: 5.888575
+Thread[Thread-4,5,main]: elapsed seconds: 7.888393
+Thread[Thread-5,5,main]: elapsed seconds: 9.888249
+Thread[Thread-6,5,main]: elapsed seconds: 11.888094
+Thread[Thread-7,5,main]: elapsed seconds: 13.887843
+Thread[Thread-8,5,main]: elapsed seconds: 15.887744
+Thread[Thread-9,5,main]: elapsed seconds: 17.88761
