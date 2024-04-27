@@ -1,0 +1,11 @@
+Thread[main,5,main]: x value is: 1
+Thread[main,5,main]: x value is: 2
+Thread[main,5,main]: x value is: 3
+Thread[main,5,main]: x value is: 4
+Thread[main,5,main]: x value is: 5
+Thread[main,5,main]: x value is: 6
+Thread[main,5,main]: x value is: 7
+Thread[main,5,main]: x value is: 8
+Thread[main,5,main]: x value is: 9
+Thread[main,5,main]: x value is: 10
+

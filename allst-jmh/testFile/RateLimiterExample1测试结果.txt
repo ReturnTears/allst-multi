@@ -1,0 +1,46 @@
+rate = 1/0.1
+Thread[main,5,main]: elapsed seconds: 0.0
+Thread[main,5,main]: elapsed seconds: 9.996654
+Thread[main,5,main]: elapsed seconds: 9.994362
+Thread[main,5,main]: elapsed seconds: 10.000252
+Thread[main,5,main]: elapsed seconds: 9.987617
+Thread[main,5,main]: elapsed seconds: 9.998726
+Thread[main,5,main]: elapsed seconds: 9.999364
+Thread[main,5,main]: elapsed seconds: 9.999652
+Thread[main,5,main]: elapsed seconds: 9.988282
+Thread[main,5,main]: elapsed seconds: 9.999766
+Thread[main,5,main]: elapsed seconds: 9.996498
+Thread[main,5,main]: elapsed seconds: 9.99953
+......
+rate = 1/0.5
+Thread[main,5,main]: elapsed seconds: 0.0
+Thread[main,5,main]: elapsed seconds: 1.994249
+Thread[main,5,main]: elapsed seconds: 1.996199
+Thread[main,5,main]: elapsed seconds: 2.000107
+Thread[main,5,main]: elapsed seconds: 1.996753
+Thread[main,5,main]: elapsed seconds: 1.998838
+Thread[main,5,main]: elapsed seconds: 1.999109
+Thread[main,5,main]: elapsed seconds: 1.999085
+Thread[main,5,main]: elapsed seconds: 2.000206
+Thread[main,5,main]: elapsed seconds: 1.997669
+Thread[main,5,main]: elapsed seconds: 1.999691
+Thread[main,5,main]: elapsed seconds: 1.996655
+Thread[main,5,main]: elapsed seconds: 1.998752
+Thread[main,5,main]: elapsed seconds: 1.999453
+Thread[main,5,main]: elapsed seconds: 1.999905
+Thread[main,5,main]: elapsed seconds: 1.986302
+Thread[main,5,main]: elapsed seconds: 1.9999
+Thread[main,5,main]: elapsed seconds: 1.989525
+Thread[main,5,main]: elapsed seconds: 1.994839
+Thread[main,5,main]: elapsed seconds: 1.999251
+Thread[main,5,main]: elapsed seconds: 2.000193
+Thread[main,5,main]: elapsed seconds: 1.993491
+Thread[main,5,main]: elapsed seconds: 2.000241
+Thread[main,5,main]: elapsed seconds: 1.989627
+Thread[main,5,main]: elapsed seconds: 1.981211
+Thread[main,5,main]: elapsed seconds: 1.999872
+Thread[main,5,main]: elapsed seconds: 1.992471
+Thread[main,5,main]: elapsed seconds: 1.999799
+Thread[main,5,main]: elapsed seconds: 1.99139
+Thread[main,5,main]: elapsed seconds: 1.999731
+......
