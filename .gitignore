@@ -1,0 +1,8 @@
+.gitignore
+.idea/
+*.class
+/target/
+*/target/*/
+*.jar
+*.iml
+*.original
