@@ -131,7 +131,7 @@ channel unregistered    未注册
     -- 4) Neety本质是一个NIO框架，适用于服务器通讯相关的多种应用场景。
     -- 5) 要透彻理解Netty，需要先学习NIO，这样才能阅读Netty的源码
  🍎 Netty的应用场景
-    -- 互联网行业：1、分布式系统种，各个节点之间需要远程服务调用，高性能的RPC框架必不可少。2、阿里分布式服务框架Dubbo就用到了Netty
+    -- 互联网行业：1、分布式系统中，各个节点之间需要远程服务调用，高性能的RPC框架必不可少。2、阿里分布式服务框架Dubbo就用到了Netty
     -- 游戏行业：Netty作为高性能的基础通信组件
     -- 大数据领域：Hadoop的高性能通信和序列化组件（AVRO实现数据我呢见共享）的RPC框架
     >> I/O模型: 
@@ -238,7 +238,103 @@ channel unregistered    未注册
             }
             
             
- 🍎 Netty核心模块
+### 🍎 Netty核心模块
+```text
+Netty框架主要由三个功能模块组成，分别是核⼼（Core）功能模 块、传输服务（Transport Services）功能模块和协议⽀持（Protocol Support）功能模块。
+核⼼（Core）功能模块：⽤于核⼼功能的定义与实现。
+1、Zero-Copy-Capable Rich Byte Buffer：⽀持零拷⻉的字节缓冲（Rich Byte Buffer表⽰多字节的缓冲对象），实现了Netty框架版本的Byte Buffer功能（针对JDK的ByteBuffer功能进⾏了强⼤的优化）。
+2、Universal Communication API：通⽤通信API。
+3、Extensible Event Model：可扩展的事件模型。
+
+传输服务（Transport Services）功能模块：⽤于具体⽹络传输的定义与实现。
+1、In-VM pipe：内部JVM传输管道的实现。
+2、HTTP Tunnel：HTTP传输协议的实现。
+3、Socket Datagram：Socket TCP、Socket UDP传输协议的实现。
+
+协议⽀持（Protocol Support）功能模块：相关协议的⽀持。
+1、借助单元测试的传统⽂本、⼆进制协议。
+2、压缩、⼤⽂件传输协议、实时流传输协议。
+3、Http & WebSocket、SSL、StartTLS、Google Protobuf等协议。
+
+```
+#### Netty Bootstrap⼊⼝模块
+```text
+Netty Bootstrap模块相当于Netty框架的启动器，因此也称为⼊⼝模块，主要包括Bootstrap接⼝和ServerBootstrap接⼝，
+在 io.netty.bootstrap 模 块 中 定 义 了Bootstrap接⼝类和ServerBootstrap接⼝类。其中，Bootstrap接⼝主要负责客⼾端的启动，ServerBootstrap接⼝主要负责服务端的启动。
+Bootstrap接⼝类和ServerBootstrap接⼝类在启动过程中，主要功能是创建、初始化和配置核⼼的Channel对象。
+
+```
+#### Netty Channel传输通道模块
+```text
+Channel传输通道模块是Netty框架⽹络操作的抽象类，主要包括基本的I/O操作（例如：bind、connect、read、write等）。
+另外，Channel传输通道模块还包括了Netty框架相关的⼀些功能，⽐如如何获取该Channel模块的事件驱动循环对象（EventLoop)。
+
+Netty框架设计Channel模块的⽬的，主要是为了解决传统套接字（Socket）⽹络编程中的烦琐不易之处。相信但凡有过套接字
+（Socket）⽹络编程开发经验的读者⼀定深有感触，使⽤底层Socket开发⽹络应⽤的难度⼤，且成本⾼，⼀不⼩⼼就会掉⼊各种陷阱之中耗费精⼒。
+
+⽽Netty框架设计出的Channel模块很好地解决了上述问题，它所提供的⼀系列API，极⼤地降低了直接使⽤套接字（Socket）进⾏⽹络开发的难度。
+尤其是针对原⽣Java NIO的开发，Netty框架的Channel模块较好地解决了诸多痛点。
+
+Channel接⼝API采⽤了Facade模式进⾏统⼀封装，将⽹络I/O操作及其相关的其他操作统⼀封装起来，很好地为SocketChannel接⼝和ServerSocketChannel接⼝提供了统⼀的视图。
+
+Channel模块是使⽤了聚合（⾮包含）的⽅式来实现的，将相关功能聚合在Channel 之中进⾏统⼀的管理与调度。 其中 ，NioSocketChannel接⼝基于Java NIO实现了Netty框架下的TCP协议的NIO传输
+
+```
+
+#### Netty EventLoop事件循环模块
+```text
+Netty框架是基于事件驱动模型的，具体是使⽤相应的事件来通知状态改变或者操作状态改变。
+Channel模块是Netty框架⽹络操作的抽象类,EventLoop模块主要⽤于Channel模块实现I/O操作处理，这两个模块配合在⼀起来参与并完成I/O操作。
+
+Netty框架设计的EventLoop模块实现了控制流、多线程和并发功能，结合Channel模块能够帮助⽤⼾实现周期性的任务调度。
+⽐如：当⼀个客⼾端连接到达时，Netty就会注册⼀个Channel对象，然后由EventLoopGroup接⼝（可以理解为EventLoop接⼝组合）分配⼀个EventLoop对象绑定到这个Channel对象上。
+此时这个Channel对象在整个⽣命周期中，都是由这个绑定的EventLoop对象来提供相应的服务。
+
+根据Netty官⽅⽂档中的解释，对于Channel、Thread（线程）、EventLoop和EventLoopGroup之间的关系⼤致总结如下：
+1、⼀个EventLoopGroup对象包含⼀个或多个EventLoop对象。
+2、⼀个EventLoop对象在其⽣命周期内只能绑定⼀个Thread对象。
+3、凡是由EventLoop对象处理的I/O事件都由其所绑定的Thread对象来处理。
+4、⼀个Channel对象在其⽣命周期内只能注册⼀个EventLoop对象。
+5、⼀个EventLoop对象可能被分配处理多个Channel对象（即EventLoop与Channel是1:n的关系）。
+6、⼀个Channel对象上所有的ChannelHandler事件由其所绑定的EventLoop对象中的I/O线程进⾏处理。
+7、千万不要阻塞Channel对象的I/O线程，这可能会影响该EventLoop对象中所包含的其他Channel对象的事件处理。
+
+```
+
+#### Netty ChannelFuture异步通知接⼝
+```text
+Netty框架被设计为异步⾮阻塞⽅式，即所有I/O操作都为异步的，也就是应⽤程序不会⻢上得知客⼾端发送的请求是否已经被服务器端处理完成了。
+
+因此，Netty框架设计了⼀个ChannelFuture异步通知接⼝，通过该接⼝定义的addListener()⽅法注册⼀个ChannelFutureListener对象，
+当操作执⾏成功或者失败时，监听对象就会⾃动触发并返回结果。
+
+```
+
+#### ChannelHandler与ChannelPipeline接⼝
+```text
+ChannelHandler接⼝是Netty框架中的核⼼部分，是负责管理所有I/O数据的应⽤程序逻辑容器。具体来讲，ChannelHandler就是⽤来管理连接请求、数据接收、异常处理和数据转换等功能的接⼝。
+
+ChannelHandler接⼝有两个核⼼⼦类：ChannelInboundHandler和ChannelOutboundHandler。其中，ChannelInboundHandler⼦类负责处理输⼊数据和输⼊事件，
+⽽ChannelOutboundHandler⼦类负责处理输出数据和输出事件。
+
+ChannelPipeline接⼝则为ChannelHandler接⼝提供了⼀个容器，并定义了⽤于沿着链传播输⼊和输出事件流的API。
+⼀个数据或者事件可能会被多个Handler处理，在这个过程中，数据或事件流经ChannelPipeline接⼝后交由ChannelHandler接⼝处理。
+
+在这个处理过程中，⼀个ChannelHandler对象接收输⼊数据并处理完成后交给下⼀个ChannelHandler对象，或者什么都不做直接交给下⼀个ChannelHandler对象进⾏处理。
+
+当⼀个数据流进⼊ChannlePipeline时，会从ChannelPipeline头部开始传给第⼀个ChannelInboundHandler。
+当第⼀个处理完后再传给下⼀个，⼀直传递到ChannlePipeline的尾部。相反地，当⼀个数据流写出时，其会从管道尾部开始操作，
+当处理完成后会传递给前⼀个ChannelOutboundHandler对象。
+
+当ChannelHandler对象被添加到ChannelPipeline对象时，其会被分配⼀个ChannelHandlerContext，代表了ChannelHandler 和ChannelPipeline之间的绑定。
+其中，ChannelHandler对象被添加到ChannelPipeline对象的过程如下：
+（1）⼀个ChannelInitializer对象的实现被注册到了ServerBootStrap对象上。
+（2）当ChannelInitializer.initChannel⽅法被调⽤时，ChannelInitializer将在ChannelPipeline中安装⼀组⾃定义的ChannelHandler。
+（3）ChannelInitializer将它⾃⼰从ChannelPipeline中移除。
+
+```
+
+
  🍎 Google Protobuf
  🍎 Netty编解码器和handler的调用机制（important）
  🍎 TCP粘包与拆包及解决方案

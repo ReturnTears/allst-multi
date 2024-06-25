@@ -16,9 +16,12 @@ public class HelloNettyServerHandler extends ChannelInboundHandlerAdapter {
         ByteBuf buf = (ByteBuf) msg;
         try {
             while (buf.isReadable()) {
-                System.out.println((char) buf.readByte());
+                // ByteBuf byteBuf = buf.readBytes(1024);
+                //System.out.print(byteBuf.readByte());
+                System.out.print((char) buf.readByte());
                 System.out.flush();
             }
+            System.out.println();
         } finally {
             buf.release();
         }
