@@ -346,6 +346,15 @@ ChannelPipeline接⼝则为ChannelHandler接⼝提供了⼀个容器，并定义
    >> Netty心跳（heartbeat）服务源码剖析
    >> Netty核心组件EventLoop源码剖析
  🍎 
+
+
+### 构建完整的Netty应⽤程序
+```text
+⼀个完整的Netty应⽤程序包含服务器端和客⼾端，客⼾端将信息发送给服务器端进⾏处理，同时服务器端再将信息经过处理后返回给客⼾端。
+
+
+```
+
  
 ### 第一章：初识Netty背景、现状、与趋势
  ```text
