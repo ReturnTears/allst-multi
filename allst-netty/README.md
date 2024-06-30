@@ -429,6 +429,96 @@ Java多线程应⽤程序会把⾃⾝分解为若⼲个任务去执⾏，这些�
 7、Reactor模型
 Reactor模型（反应器模型）是⼀种基于I/O多路复⽤策略、处理⼀个或多个客⼾端并发连接请求的事件设计模式。
 
+7.1、I/O多路复⽤策略
+所谓I/O多路复⽤，就是指使⽤⼀个线程来检查多个⽂件描述符Socket的就绪状态
+例如，通过调⽤select和poll函数来传⼊多个⽂件描述符，如果有⼀个⽂件描述符的状态就绪则返回，否则就阻塞直到超时。
+在得到就绪状态后进⾏真正操作时，可以在同⼀个线程⾥执⾏，也可以启动新线程执⾏（如使⽤线程池时）。
+
+⼀般情况下，I/O多路复⽤策略是需要使⽤事件分发器的。对于事件分发器的作⽤，简单来说就是将那些读写事件源分发给各⾃读写事件的处理者。
+涉及事件分发器的两种模式分别称为Reactor模型和Proactor模型。
+
+Reactor模型是基于同步I/O的，⽽Proactor模型是与异步I/O相关的。
+Netty线程模型就是通过Reactor模型、并基于I/O多路复⽤策略设计的。
+
+7.2、Reactor模型和Proactor模型
+⽆论是Reactor模型或是Proactor模型，⼆者都是⼀种基于事件驱动的、⾼性能的I/O设计模型。
+⼆者的区别就是Reactor模型是基于同步I/O的，⽽Proactor模型是与异步I/O相关的。
+
+1). Reactor模型——“反应堆”式的事件驱动调⽤机制
+a.普通的函数调⽤机制
+在普通的程序调⽤函数⽅式中，应⽤程序会根据处理流程主动调⽤并执⾏函数，然后程序会等待函数执⾏完成后的返回结果，函数会在执⾏完毕后将控制权回交给程序。
+b.回调函数
+Reactor模型则恰恰相反，其反置了整个处理流程。应⽤程序不是主动的调⽤某个函数完成处理，⽽是提供了调⽤函数所对应的接⼝并注册到Reactor上，
+并将触发调⽤的操作定义为事件。当系统或⽤⼾操作触发事件时，Reactor将主动调⽤应⽤程序注册的对应接⼝并执⾏函数，因此这些接⼝也称为“回调函数”。
+将Reactor模型描述为“反应堆”式的事件驱动调⽤机制是⾮常形象的。当客⼾端提交⼀个或多个并发服务请求时，服务器端的处理程序会使⽤I/O多路复⽤策略，
+同步派发这些请求⾄相关的请求处理程序。
+
+Reactor模型是处理并发I/O⽐较常⻅的⼀种模型，其核⼼思想就是将所有要处理的I/O事件注册到⼀个中⼼I/O多路复⽤器上，同时主线程阻塞在多路复⽤器上。
+如果有I/O事件到来或是准备就绪，I/O多路复⽤器就会返回，并将相应I/O事件分发到对应的处理器中进⾏处理。
+
+2). Proactor模型——“主动器”式的事件驱动调⽤机制
+虽然Reactor模型相对简单⾼效，但在处理异步I/O请求时就会显得很不适应。因此，设计⼈员就提出来了⼀种“主动器”式的Proactor模型，专⻔⽤于异步I/O请求⽅式。
+在Proactor模型下，应⽤程序初始化⼀个异步读写操作，然后注册相应的事件处理器。此时，事件处理器并不会关注读写就绪事件，⽽是只关注读写操作完成事件（这也正是区别于Reactor模型的关键）。
+然后，在事件分发器等待读写操作完成事件的过程中，操作系统会通过调⽤内核线程完成读写操作，并将读写的内容放⼊应⽤缓存区中（异步IO请求均是由操作系统负责将数据读写到应⽤缓冲区中的）。
+
+在事件分发器捕获到读写完成事件后，激活应⽤程序注册的事件处理器，并由事件处理器直接从缓存区中读写数据（此时就不是实际的读写操作了，实际的读写操作已经由系统内核完成了）。
+
+3). Reactor模型与Proactor模型的异同
+Reactor模型与Proactor模型的相同点是，它们都是基于I/O多路复⽤策略实现的。区别在于Reactor模型是基于同步I/O的，⽽Proactor模型是与异步I/O相关的。
+
+Reactor模型实现了⼀个被动的事件分发模型，服务等待请求事件的到来，再通过不受间断的同步处理事件，进⽽完成操作处理。
+Proactor模型实现了⼀个主动的事件分发模型，并⽀持多个任务并发的执⾏，对于耗时⻓的任务有特别优势（各个任务间互不影响）。
+
+Reactor模型实现相⽐于Proactor模型实现要简单，Proactor模型逻辑复杂并依赖于操作系统对异步的⽀持。
+对于Proactor模型⽀持⽐较好的有Windows系统实现的IOCP接⼝。相⽐于Windows系统，由于Unix/Linux系统对纯异步的⽀持有限，主要还是⽀持Reactor模型。
+
+7.3、Reactor线程模型
+在 Reactor模型中， 主要包括Handle、Synchronous EventDemultiplexer、Event Handler、Concrete Event Handler和Initiation Dispatcher这五⼤基本⻆⾊。
+
+a.Handle（资源描述符）
+Handle的概念⽐较宽泛，本质上是操作系统范畴中⼀种⽤于描述资源的标识。
+例如：⽂件描述符、Socket描述符和事件描述符等。另外，在Windows操作系统中，Handle⼀般称为句柄，其实就是对资源描述符的另⼀种称谓。
+在Reactor模型中，Handle主要⽤于表⽰事件发⽣的源头。
+
+b.Synchronous EventDemultiplexer（同步事件分发器）
+Synchronous Event Demultiplexer本质上是⼀个系统调⽤，主要⽤于等待⼀个或多个事件的发⽣。顾名思义，Synchronous Event Demultiplexer是同步的，被调⽤时会被阻塞，直到有事件产⽣为⽌。 
+在Linux系统中，Synchronous Event Demultiplexer⼀般就是指I/O多路复⽤机制，⽐如select、poll和epoll等。 在Java NIO范畴中，Synchronous Event Demultiplexer就是指Selector选择器，
+对应的就是select()⽅法（阻塞⽅法）。
+
+c.Event Handler（事件处理器）
+Event Handler是由多个回调⽅法构成的，这些回调⽅法构成了针对某个事件的反馈机制。
+在Java NIO范畴中，Event Handler是由开发⼈员⾃⾏编写代码完成调⽤或回调的。⽽Netty架构中的Event Handler针对
+Java NIO进⾏了升级，为开发⼈员提供了⼤量的回调⽅法，针对特定的事件定义了相应的业务逻辑处理的回调⽅法。
+例如：在ChannelHandler中对应的都是⼀个个特定事件的回调⽅法。
+
+d.Concrete Event Handler（具体事件处理器）
+Concrete Event Handler是Event Handler（事件处理器）的具体实现，它实现了Event Handler（事件处理器）所提供的各种回调⽅法，进⽽实现了特定的业务逻辑。
+
+e.Initiation Dispatcher（初始化分发器）
+Initiation Dispatcher定义了⼀组规范，⽤于控制事件的调度⽅式，同时还提供了针对Event Handler（事件处理器）的注册、删除等机制。
+Initiation Dispatcher是整个Event Handler的核⼼，其通过Synchronous Event Demultiplexer来等待事件的发⽣、事件到来时负责分离出每⼀个事件，
+进⽽调⽤Event Handler中的特定回调⽅法来处理这些事件。在Reactor模型中，Initiation Dispatcher实际上就扮演着Reactor的⻆⾊。
+
+以上这些角色是如何协作工作的？
+⾸先，Initiation Dispatcher（初始化分发器）启动时，会把所有相关的Event Handler（事件处理器）对应的具体实现Concrete Event Handler（具体事件处理器）注册到Initiation Dispatcher中。
+然后，Initiation Dispatcher（初始化分发器）通过Synchronous Event Demultiplexer（同步事件分离器）等待事件的发⽣，事件到来时再根据事件的类型调⽤Event Handler（事件处理器）的回调。
+Event Handler（事件处理器）拥有Handle（事件描述符）的引⽤，Initiation Dispatcher在事件注册完成后会执⾏⾃⼰的内部循环（调⽤Synchronous Event Demultiplexer的select()⽅法）。
+最后，当客⼾端的连接请求到来时，select()⽅法会返回事件的集合，由Initiation Dispatcher遍历集合负责获取每⼀个具体的事件，再根据事件类型调⽤Event Handler的回调⽅法进⾏具体操作。
+
+基于Reactor模型的主要有Reactor单线程模型、Reactor多线程模型和主从Reactor多线程模型这三种，这也正是Netty设计者构建Netty线程模型的核⼼基础。
+
+
+7.4、Reactor单线程模型
+Reactor单线程模型，指的是所有的I/O操作都在同⼀个NIO线程上⾯完成，NIO线程的职责如下：
+· 作为NIO服务端，接收客⼾端的TCP连接。
+· 作为NIO客⼾端，向服务端发起TCP连接。
+· 读取通信对端的请求或者应答消息。
+· 向通信对端发送消息请求或者应答消息。
+
+
+
+
+
 
 
 ```
