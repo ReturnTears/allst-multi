@@ -515,9 +515,81 @@ Reactor单线程模型，指的是所有的I/O操作都在同⼀个NIO线程上�
 · 读取通信对端的请求或者应答消息。
 · 向通信对端发送消息请求或者应答消息。
 
+Reactor是服务器端的⼀个线程对象，负责启动事件循环，并使⽤select()函数（阻塞⽅式）实现I/O多路复⽤。Acceptor事件处理器注册到Reactor对象中，
+并负责监听由客⼾端向服务器端发起的连接请求ACCEPT事件。Acceptor事件处理器会通过accept()⽅法得到客⼾端连接，并将具体的READ事件以及对应的READ事件注册到Reactor对象中。
+当Reactor监听到有READ事件发⽣时，会将相关的事件派发给对应的Handle处理器进⾏处理。同理，对于WRITE事件也是⼤致如此。最后，当Reactor对象处理完线程中的I/O事件后，
+会再次执⾏select()函数等待新的事件就绪并进⾏处理。
 
+注意：所谓Reactor单线程模型中的“单线程”主要是针对I/O操作⽽⾔，也就是所有的I/O操作都在⼀个线程上完成的。
 
+Reactor单线程模型主要适⽤于低负载、低并发、⼩数据量的应⽤场景，⽽对于⾼负载、⾼并发、⼤数据量的应⽤场景是明显⼒不从⼼的。
 
+7.5、Reactor多线程模型
+Reactor多线程模型是指在Reactor单线程模型的基础上，增加了⼀个⼯作者（worker）线程池。该⼯作者（worker）线程池负责处理从Reactor线程中移交出来的⾮I/O操作，
+最⼤程度地提⾼Reactor线程的I/O响应处理能⼒，尽量避免由于⼀些耗时的业务操作占⽤资源，进⽽延迟后续I/O请求操作的处理。
+Reactor多线程模型相⽐于Reactor单线程模型，在业务逻辑上主要做出了以下⼏个⽅⾯的改进：
+a.将Handler处理器的执⾏放⼊线程池，由多线程进⾏业务处理。
+b.Reactor线程对象可以仍为单线程，⽽如果服务器为双核CPU，为了充分利⽤系统资源，可将Reactor对象拆分为两个线程。
+
+Reactor多线程模型与Reactor单线程模型不同之处在于增加了⼀个⼯作者线程池（Thread Pool）。
+
+在Reactor多线程模型中，⼯作者线程池（Thread Pool）将⾮I/O操作从Reactor线程对象中移出，并转交给⼯作者线程（Worker Thread）来处理执⾏。
+这种⽅式能够提⾼Reactor线程对象的I/O响应处理能⼒，尽量避免由于⼀些耗时的业务操作占⽤资源，进⽽延迟后续I/O请求操作的处理。
+
+在Reactor多线程模型中增加⼯作者线程池（Thread Pool）的设计，可以通过重复使⽤已有的线程（不⽤额外创建新的线程）避免在处理多个请求时，
+由于创建新线程及销毁旧线程过程中产⽣的资源开销。另外，由于⼯作者线程（Worker Thread）通常都是处于⼯作状态，当客⼾端请求到达时可以⽴即接受任务，
+避免了由于等待创建新线程⽽延迟任务的执⾏，也就是提⾼了线程的响应性。
+
+Reactor多线程模型通过适当调整⼯作者线程池的⼤⼩，可以创建合适的线程数量以满⾜处理器时刻保持忙碌状态。
+同时，还可以防⽌由于过多的线程相互竞争系统资源，从⽽使应⽤程序耗尽内存或失败。
+
+7.6、主从Reactor多线程模型
+主从Reactor多线程模型是指在Reactor多线程模型的基础上，将Reactor分成mainReactor和subReactor两部分。
+其中，mainReactor负责监听服务器端的套接字并接收新连接，然后将建⽴的套接字分派给subReactor。
+⽽subReactor则负责解析已连接的套接字，然后将具体的业务操作转发给⼯作者线程池来完成。实际上，subReactor的数量可与服务器的CPU数量等同。
+主从Reactor多线程模型相⽐于Reactor多线程模型，在业务逻辑上主要做出了以下⼏⽅⾯的改进：
+a.服务器端⽤于接收客⼾端连接的不再是⼀个单独的线程，⽽是⼀个独⽴的线程池。
+b.Acceptor接收到客⼾端的连接请求并处理完成后，将创建新的线程并注册到subReactor线程池中的某个I/O线程上，由其负责具体的业务⼯作。
+
+在主从Reactor多线程模型的线程池中，每⼀个Reactor线程对象都会有⾃⼰的selector()函数、线程及事件分发的循环逻辑。
+主从Reactor多线程模型中的mainReactor可以只有⼀个，但subReactor⼀般会有多个（通常会对应于CPU数量）。 
+其中，mainReactor主要负责接收客⼾端的连接请求，然后将接收到的套接字转发给subReactor，最终由subReactor来完成与客⼾端的实际业务操作。
+
+关于主从Reactor多线程模型的业务逻辑主要如下：
+（1）在服务器端接收到客⼾端的连接请求后，会注册⼀个Acceptor事件处理器到mainReactor中。
+需要注意，Acceptor事件处理器仅仅负责处理ACCEPT事件，⽽mainReactor负责启动事件循环来监听客⼾端向服务器端发起的ACCEPT连接请求事件。
+Acceptor处理器负责处理与客⼾端对应的连接套接字，然后将这个连接套接字传递给subReactor。
+（2）subReactor线程池（Thread Pool）会分配⼀个subReactor线程给这个连接套接字，也就是将对应的事件处理器注册到subReactor线程中。
+另外，对于subReactor线程池（Thread Pool）中的每个Reactor线程，都会有⾃⼰的循环逻辑。
+（3）当服务器端有I/O事件就绪时，相关的subReactor线程就会将事件转发给对应的处理器进⾏处理。
+请注意，此时subReactor线程只负责完成I/O读操作，在读取到数据后会将业务逻辑的处理放⼊到线程池中去完成。
+如果完成业务逻辑后需要返回数据给客⼾端，则相关I/O写操作还是会被返回给subReactor线程来完成。
+
+对于主从Reactor多线程模型⽽⾔，所有I/O操作是由Reactor线程负责处理的，线程池（Thread Pool）仅仅⽤来处理⾮I/O操作。
+其中，mainReactor负责完成接收客⼾端连接请求的操作（不负责与客⼾端的通信业务），然后将建⽴好的连接套接字转发给subReactor，
+由subReactor负责完成与客⼾端的通信业务。这样设计的好处就是，对于⾼负载、⾼并发、⼤数据量的应⽤场景，mainReactor专⻔负责客⼾端的连接请求，
+具体I/O操作会分发给多个subReactor来进⾏处理，对于⽀持多核CPU服务器端可以最⼤程度地提升负载性能。
+
+8、Netty线程模型
+Netty框架能够很好地⽀持⾼并发特性的⼀个重要原因，就是基于其⾼性能的线性模型。具体来说，Netty框架的线性模型是通过Reactor模型，并基于I/O多路复⽤器接收和处理⽤⼾请求的设计。
+
+8.1、Netty线程模型与Reactor模型的关系
+Netty线程模型就是基于I/O多路复⽤策略⽽实现的⼀个Reactor线程模型的经典通信架构。
+（1）Netty服务器端在启动时会配置⼀个ChannelPipeline，在ChannelPipeline中包含⼀个ChannelHandler链。
+所有的I/O事件发⽣时都会触发Channelhandler中的事件⽅法，这个事件会在ChannelPipeline中的ChannelHandler链⾥进⾏传递。
+此时，Netty的事件处理器（EventHandle）就相当于ChannelHandler。
+（2）Netty 服 务 器 端 从 bossGroup 事 件 循 环 池（NioEventLoopGroup）中获取⼀个NioEventLoop来实现服务器端程序绑定本地端⼝的操作，
+将对应的ServerSocketChannel注册到该NioEventLoop中的Selector上，并注册ACCEPT事件为ServerSocketChannel所感兴趣的事件。
+此时，在Netty的bossGroup事件循环池（NioEventLoopGroup）中获取的NioEventLoop就相当于mainReactor，
+NioEventLoop中的Selector就相当于同步事件分离器（Synchronous Event Demultiplexer）。
+（3）NioEventLoop启动事件循环来监听客⼾端的连接请求。每当有客⼾端向服务器端发起连接请求时，NioEventLoop的事件循环监听到该ACCEPT事件，
+Netty负责接收这个连接并通过accept()⽅法得到与这 个 客 ⼾ 端 的 连 接 （ SocketChannel ） 。 
+此时，Netty会并触发ChannelHandler中的ChannelRead事件，该事件会在ChannelPipeline中的ChannelHandler链中执⾏并传递。
+ServerBootstrapAcceptor中的readChannel()⽅法负责将该客⼾端的连接（SocketChannel）注册到workerGroup（NioEventLoopGroup）中某个NioEventLoop的Selector上，
+并注册READ事件为客⼾端的连接（SocketChannel）所感兴趣的事件，接下来就可以在客⼾端与服务器端之间进⾏通信了。
+
+8.2、Netty单线程模型应⽤
+在Netty单线程模型应⽤中，通过在启动辅助类中创建单线程对应的EventLoopGroup实例，并进⾏与单线程相应的参数配置，就可以实现基于Reactor单线程模型的Netty应⽤。
 
 
 
