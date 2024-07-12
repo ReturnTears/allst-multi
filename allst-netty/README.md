@@ -590,8 +590,15 @@ ServerBootstrapAcceptor中的readChannel()⽅法负责将该客⼾端的连接�
 
 8.2、Netty单线程模型应⽤
 在Netty单线程模型应⽤中，通过在启动辅助类中创建单线程对应的EventLoopGroup实例，并进⾏与单线程相应的参数配置，就可以实现基于Reactor单线程模型的Netty应⽤。
+Netty是事件驱动的，可以通过ChannelHandler链来控制流程执⾏⽅向。 Netty模型中的Boss类充当mainReactor，
+Worker类充当subReactor。在实际的连接请求到来时，Worker线程将已收到的数据转到ChannelBuffer中，
+然后触发ChannelPipeline中的ChannelHandler流。
 
+Netty服务器端使⽤了“主从Reactor多线程模型”进⾏设计。mainReactor 对 应 着 bossGroup（NioEventLoopGroup ） 中 的 某 个
+NioEventLoop，subReactor对应着workerGroup（NioEventLoopGroup）中 的 某 个 NioEventLoop ， acceptor 对 应 着 ServerBootstrapAcceptor ，
+Thread Pool则对应着⽤⼾的⾃定义线程池。
 
+Netty线程模型是基于Reactor模型实现的异步事件驱动⽹络应⽤框架，所以掌握Reactor模式对于Netty的学习⾄关重要。
 
 ```
 
