@@ -16,6 +16,7 @@
         <module>allst-distribute</module>
         <module>allst-jmh</module>
         <module>allst-async</module>
+      <module>allst-file</module>
     </modules>
 
     <name>allst-multi</name>
