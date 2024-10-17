@@ -1,5 +1,6 @@
 package com.allst.concurrent.thread;
 
+import java.time.LocalDateTime;
 import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.CyclicBarrier;
 
@@ -22,7 +23,8 @@ public class CyclicBarrierDemo {
     public static void main(String[] args) {
         Thread thread1 = new Thread(() -> {
             try {
-                System.out.println("thread1 is waiting");
+                LocalDateTime now = LocalDateTime.now();
+                System.out.println("thread1 is waiting : " + now);
                 barrier.await();
                 System.out.println("thread1 goes");
             } catch (InterruptedException | BrokenBarrierException e) {
@@ -32,7 +34,8 @@ public class CyclicBarrierDemo {
         Thread thread2 = new Thread(() -> {
             try {
                 Thread.sleep(2000);
-                System.out.println("thread2 is waiting");
+                LocalDateTime now = LocalDateTime.now();
+                System.out.println("thread2 is waiting : " + now);
                 barrier.await();
                 System.out.println("thread2 goes");
             } catch (InterruptedException | BrokenBarrierException e) {
@@ -42,7 +45,8 @@ public class CyclicBarrierDemo {
         Thread thread3 = new Thread(() -> {
             try {
                 Thread.sleep(4000);
-                System.out.println("thread3 is waiting");
+                LocalDateTime now = LocalDateTime.now();
+                System.out.println("thread3 is waiting : " + now);
                 barrier.await();
                 System.out.println("thread3 goes");
             } catch (InterruptedException | BrokenBarrierException e) {
