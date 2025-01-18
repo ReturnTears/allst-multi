@@ -1,11 +1,14 @@
 package com.allst.multi.immutableObjectPattern;
 
+import lombok.Getter;
+
 /**
  * 业务相关数据
  *
  * @author Hutu
  * @since 2023-02-15 下午 10:28
  */
+@Getter
 public final class MyMMSCInfo {
     // 设备编号
     private final String deviceID;
@@ -26,15 +29,4 @@ public final class MyMMSCInfo {
         this.maxAttachmentSizeInBytes = prototype.maxAttachmentSizeInBytes;
     }
 
-    public String getDeviceID() {
-        return deviceID;
-    }
-
-    public String getUrl() {
-        return url;
-    }
-
-    public int getMaxAttachmentSizeInBytes() {
-        return maxAttachmentSizeInBytes;
-    }
 }

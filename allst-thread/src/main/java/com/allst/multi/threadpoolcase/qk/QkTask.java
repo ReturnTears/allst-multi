@@ -11,9 +11,9 @@ public class QkTask implements Runnable {
     // 金额
     private static double money = 1000;
 
-    private String account;
+    private final String account;
 
-    private double qkMoney;
+    private final double qkMoney;
 
     public QkTask(String account, double qkMoney) {
         this.account = account;

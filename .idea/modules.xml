@@ -5,7 +5,6 @@
       <module fileurl="file://$PROJECT_DIR$/allst-bf/allst-bf.iml" filepath="$PROJECT_DIR$/allst-bf/allst-bf.iml" />
       <module fileurl="file://$PROJECT_DIR$/allst-multi.iml" filepath="$PROJECT_DIR$/allst-multi.iml" />
       <module fileurl="file://$PROJECT_DIR$/allst-netty/allst-netty.iml" filepath="$PROJECT_DIR$/allst-netty/allst-netty.iml" />
-      <module fileurl="file://$PROJECT_DIR$/allst-thread/allst-thread.iml" filepath="$PROJECT_DIR$/allst-thread/allst-thread.iml" />
     </modules>
   </component>
 </project>

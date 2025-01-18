@@ -7,21 +7,22 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="allst-bf" />
+        <module name="allst-async" />
         <module name="allst-netty" />
         <module name="allst-thread" />
+        <module name="allst-distribute" />
+        <module name="allst-bf" />
+        <module name="allst-nginx" />
+        <module name="allst-file" />
+        <module name="allst-jmh" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel target="1.8">
-      <module name="allst-bf" target="1.8" />
-      <module name="allst-multi" target="1.8" />
-      <module name="allst-netty" target="1.8" />
-      <module name="allst-thread" target="1.8" />
-    </bytecodeTargetLevel>
+    <bytecodeTargetLevel target="1.8" />
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="allst-bf" options="-parameters" />
+      <module name="allst-jmh" options="-parameters" />
       <module name="allst-netty" options="-parameters" />
     </option>
   </component>
