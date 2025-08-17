@@ -13,7 +13,7 @@ import java.util.stream.Stream;
  */
 public class ForkJoinTest {
     private static double[] d;
-    private class ForkJoinTask extends RecursiveTask<Integer> {
+    private static class ForkJoinTask extends RecursiveTask<Integer> {
         private final int first;
         private final int last;
 
