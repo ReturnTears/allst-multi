@@ -9,7 +9,6 @@ import java.util.concurrent.TimeUnit;
  * @since 2020-03-08 下午 09:13
  */
 public class MsTast {
-
     public static void main(String[] args) {
         ThreadPoolExecutor pool = new ThreadPoolExecutor(3, 5, 1, TimeUnit.MINUTES, new LinkedBlockingQueue<>(15));
 
@@ -19,5 +18,4 @@ public class MsTast {
         }
         pool.shutdown();
     }
-
 }

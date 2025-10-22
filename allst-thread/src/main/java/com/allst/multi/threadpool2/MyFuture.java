@@ -8,7 +8,6 @@ import java.util.concurrent.*;
  * @since 2020-03-08 下午 04:29
  */
 public class MyFuture {
-
     public static void main(String[] args) throws ExecutionException, InterruptedException {
         // 创建线程池
         ExecutorService es = Executors.newCachedThreadPool();
@@ -29,7 +28,6 @@ public class MyFuture {
         boolean isd = future.isDone();
         System.out.println("任务是否完成~ " + isd);
     }
-
 }
 
 class MyCall implements Callable<Integer> {

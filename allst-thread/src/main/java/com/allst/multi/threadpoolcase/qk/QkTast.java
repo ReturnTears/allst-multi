@@ -9,7 +9,6 @@ import java.util.concurrent.ThreadFactory;
  * @since 2020-03-08 下午 09:34
  */
 public class QkTast {
-
     public static void main(String[] args) {
         ExecutorService es = Executors.newCachedThreadPool(new ThreadFactory() {
             int flag = 0;
@@ -23,5 +22,4 @@ public class QkTast {
         }
         es.shutdown();
     }
-
 }

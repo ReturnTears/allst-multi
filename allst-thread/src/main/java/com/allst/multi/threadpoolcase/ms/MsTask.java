@@ -9,7 +9,7 @@ public class MsTask implements Runnable {
 
     private static int nums = 10;
 
-    private String name;
+    private final String name;
 
     public MsTask(String name) {
         this.name = name;
