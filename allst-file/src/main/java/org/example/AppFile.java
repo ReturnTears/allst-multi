@@ -12,7 +12,7 @@ import java.nio.channels.FileChannel;
 public class AppFile {
     public static void main(String[] args) throws IOException {
         System.out.println("Hello world!");
-        try (RandomAccessFile raf = new RandomAccessFile("E:\\TestData\\file\\inp.txt", "rw")) {
+        try (RandomAccessFile raf = new RandomAccessFile("D:\\TestData\\file\\inp.txt", "rw")) {
             MappedByteBuffer mappedByteBuffer = raf.getChannel().map(FileChannel.MapMode.READ_WRITE, 0, raf.length());
             boolean loaded = mappedByteBuffer.isLoaded();
             if (loaded) {
