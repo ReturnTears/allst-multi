@@ -30,7 +30,12 @@ public class AsyncThreadPool3 {
 
     public static void main(String[] args) throws InterruptedException, ExecutionException {
         // 1.开启异步单元执行任务A
-        Future<?> resultA = POOL_EXECUTOR.submit(() -> handleAndResult());
+        Future<?> resultA = POOL_EXECUTOR.submit(() -> {
+            String name = Thread.currentThread().getName();
+            System.out.println("async thread name : " + name);
+            return handleAndResult();
+        });
+        System.out.println("main method can do other things");
         // 2.同步等待执行结果
         System.out.println(resultA.get());
     }
