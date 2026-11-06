@@ -1,11 +1,14 @@
 package com.allst.async.chapter2;
 
+import lombok.extern.slf4j.Slf4j;
+
 /**
  * 手动编写异步编码
  *
  * @author Hutu
  * @since 2024-01-06 下午 09:27
  */
+@Slf4j
 public class SyncCode3 {
 
     private static void handle1() {
@@ -14,7 +17,7 @@ public class SyncCode3 {
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-        System.out.println("Come in handle1 method");
+        log.info("Come in handle1 method");
     }
 
     private static void handle2() {
@@ -23,7 +26,7 @@ public class SyncCode3 {
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-        System.out.println("Come in handle2 method");
+        log.info("Come in handle2 method");
     }
 
     public static void main(String[] args) throws InterruptedException {
@@ -37,6 +40,6 @@ public class SyncCode3 {
         thread1.start();
         handle2();
         thread1.join();
-        System.err.println("It`s Cost times : " + (System.currentTimeMillis() - start));
+        log.info("It`s Cost times : {}", System.currentTimeMillis() - start);
     }
 }

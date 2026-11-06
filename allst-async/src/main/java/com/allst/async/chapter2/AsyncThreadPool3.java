@@ -1,5 +1,7 @@
 package com.allst.async.chapter2;
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.util.concurrent.*;
 
 /**
@@ -8,23 +10,27 @@ import java.util.concurrent.*;
  * @author Hutu
  * @since 2024-01-06 下午 09:52
  */
+@Slf4j
 public class AsyncThreadPool3 {
     // 0自定义线程池
     private final static int AVAILABLE_PROCESSORS = Runtime.getRuntime().availableProcessors();
-    private final static ThreadPoolExecutor POOL_EXECUTOR = new ThreadPoolExecutor(AVAILABLE_PROCESSORS,
+    private final static ThreadPoolExecutor POOL_EXECUTOR = new ThreadPoolExecutor(
+            AVAILABLE_PROCESSORS,
             AVAILABLE_PROCESSORS * 2,
             1,
             TimeUnit.MINUTES, new LinkedBlockingQueue<>(5),
             new NamedThreadFactory("async-pool"),
-            new ThreadPoolExecutor.CallerRunsPolicy());
+            new ThreadPoolExecutor.CallerRunsPolicy()
+    );
 
     private static String handleAndResult() {
+        log.info("Come in method start.");
         try {
             Thread.sleep(2000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-        System.out.println("Come in handle1 method");
+        log.info("Come in method end.");
         return "task has done";
     }
 
@@ -32,11 +38,11 @@ public class AsyncThreadPool3 {
         // 1.开启异步单元执行任务A
         Future<?> resultA = POOL_EXECUTOR.submit(() -> {
             String name = Thread.currentThread().getName();
-            System.out.println("async thread name : " + name);
+            log.info("async thread name : {}", name);
             return handleAndResult();
         });
-        System.out.println("main method can do other things");
+        log.info("main method can do other things");
         // 2.同步等待执行结果
-        System.out.println(resultA.get());
+        log.info("exec result : {}", resultA.get());
     }
 }

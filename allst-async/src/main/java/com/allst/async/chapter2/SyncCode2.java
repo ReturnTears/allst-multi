@@ -1,5 +1,7 @@
 package com.allst.async.chapter2;
 
+import lombok.extern.slf4j.Slf4j;
+
 /**
  * 手动编写异步编码
  * 该方式存在的问题：
@@ -8,6 +10,7 @@ package com.allst.async.chapter2;
  * @author Hutu
  * @since 2024-01-06 下午 09:27
  */
+@Slf4j
 public class SyncCode2 {
 
     private static void handle1() {
@@ -16,7 +19,7 @@ public class SyncCode2 {
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-        System.out.println("Come in handle1 method");
+        log.info("handle1");
     }
 
     private static void handle2() {
@@ -25,7 +28,7 @@ public class SyncCode2 {
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-        System.out.println("Come in handle2 method");
+        log.info("handle2");
     }
 
     public static void main(String[] args) throws InterruptedException {
@@ -34,6 +37,6 @@ public class SyncCode2 {
         thread.start();
         handle2();
         thread.join();
-        System.err.println("It`s Cost times : " + (System.currentTimeMillis() - start));
+        log.info("It`s Cost times : {}", System.currentTimeMillis() - start);
     }
 }
