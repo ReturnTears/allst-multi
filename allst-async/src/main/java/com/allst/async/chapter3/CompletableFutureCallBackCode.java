@@ -13,9 +13,9 @@ import java.util.function.Supplier;
  */
 public class CompletableFutureCallBackCode {
 
-    private final static int AVALIABLE_PROCESSORS = Runtime.getRuntime().availableProcessors();
+    private final static int AVAILABLE_PROCESSORS = Runtime.getRuntime().availableProcessors();
 
-    private final static ThreadPoolExecutor POOL_EXECUTOR = new ThreadPoolExecutor(AVALIABLE_PROCESSORS, AVALIABLE_PROCESSORS * 2, 1, TimeUnit.MINUTES, new LinkedBlockingQueue<>(5), new ThreadPoolExecutor.CallerRunsPolicy());
+    private final static ThreadPoolExecutor POOL_EXECUTOR = new ThreadPoolExecutor(AVAILABLE_PROCESSORS, AVAILABLE_PROCESSORS * 2, 1, TimeUnit.MINUTES, new LinkedBlockingQueue<>(5), new ThreadPoolExecutor.CallerRunsPolicy());
 
     public static void main(String[] args) throws ExecutionException, InterruptedException {
         // thenApply();
@@ -82,7 +82,7 @@ public class CompletableFutureCallBackCode {
             public void accept(String s, Throwable u) {
                 // 没有异常，打印同步任务结果
                 if (null == u) {
-                    System.out.println("异步回调结果：" + s);
+                    System.out.println("async call-back result : " + s);
                 } else {
                     // 打印异常信息
                     System.out.println(u.getLocalizedMessage());

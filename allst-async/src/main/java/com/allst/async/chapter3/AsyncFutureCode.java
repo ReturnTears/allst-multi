@@ -1,5 +1,8 @@
 package com.allst.async.chapter3;
 
+import com.google.common.base.Stopwatch;
+import lombok.extern.slf4j.Slf4j;
+
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.FutureTask;
 
@@ -9,6 +12,7 @@ import java.util.concurrent.FutureTask;
  * @author Hutu
  * @since 2024-01-07 下午 09:09
  */
+@Slf4j
 public class AsyncFutureCode {
 
     private static String doHandle1() {
@@ -17,8 +21,7 @@ public class AsyncFutureCode {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        System.out.println("--- Come in method doHandle1 ---");
-
+        log.info("--- Come in method doHandle1 ---");
         return "doHandle1 method result";
     }
 
@@ -28,15 +31,14 @@ public class AsyncFutureCode {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        System.out.println("--- Come in method doHandle2 ---");
+        log.info("--- Come in method doHandle2 ---");
         return "doHandle2 method result";
-
     }
 
     public static void main(String[] args) throws InterruptedException, ExecutionException {
-        long start = System.currentTimeMillis();
+        Stopwatch stopwatch = Stopwatch.createStarted();
         // 1.创建future任务
-        FutureTask<String> futureTask = new FutureTask<String>(() -> {
+        FutureTask<String> futureTask = new FutureTask<>(() -> {
             String result = null;
             try {
                 result = doHandle1();
@@ -53,7 +55,7 @@ public class AsyncFutureCode {
         // 4.同步等待线程A运行结束
         String method1Result = futureTask.get();
         //5.打印两个任务执行结果
-        System.out.println(method1Result + " " + method2Result);
-        System.out.println(System.currentTimeMillis() - start);
+        log.info("{}, {}", method1Result, method2Result);
+        log.info("exec costs :{}", stopwatch);
     }
 }
