@@ -9,7 +9,7 @@ import java.util.function.BiConsumer;
  * @author Hutu
  * @since 2024-01-24 下午 09:08
  */
-public class TestaskExecutor {
+public class TestTaskExecutor {
     public static void main(String[] args) {
         // 1.创建容器上下文
         ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext(new String[]{"beans-annotation.xml"});

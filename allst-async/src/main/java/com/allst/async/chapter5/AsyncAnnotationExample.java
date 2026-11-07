@@ -1,7 +1,9 @@
 package com.allst.async.chapter5;
 
+import org.springframework.context.annotation.Bean;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.EnableAsync;
+import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.stereotype.Component;
 
 import java.util.concurrent.CompletableFuture;
@@ -27,5 +29,17 @@ public class AsyncAnnotationExample {
         result.complete("done");
         // 返回结果
         return result;
+    }
+
+    @Bean(name = "taskExecutor")
+    public ThreadPoolTaskExecutor taskExecutor() {
+        ThreadPoolTaskExecutor e = new ThreadPoolTaskExecutor();
+        e.setCorePoolSize(4);
+        e.setMaxPoolSize(8);
+        e.setQueueCapacity(100);
+        e.setThreadNamePrefix("async-");
+        e.initialize();
+        e.setAllowCoreThreadTimeOut(true);
+        return e;
     }
 }
