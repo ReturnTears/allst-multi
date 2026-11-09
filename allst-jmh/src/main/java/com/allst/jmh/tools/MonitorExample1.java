@@ -5,6 +5,9 @@ import com.google.common.util.concurrent.Monitor;
 import static java.lang.Thread.currentThread;
 
 /**
+ * Google Guava库中的Monitor类，它提供了一种同步构造，可替代ReentrantLock。
+ * Monitor支持在布尔条件下等待，具有tryEnterIf、enterIf和enterWhen等方法，允许线程根据条件进入和等待。
+ *
  * @author Hutu
  * @since 2024-04-27 下午 09:14
  */
@@ -23,6 +26,9 @@ public class MonitorExample1 {
             try {
                 x++;
                 System.out.println(currentThread() + ": x value is: " + x);
+                if (x == MAX_VALUE) {
+                    break;
+                }
             } finally {
                 // 注释③
                 monitor.leave();
