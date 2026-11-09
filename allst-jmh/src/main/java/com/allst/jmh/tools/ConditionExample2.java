@@ -12,6 +12,11 @@ import static java.lang.Thread.currentThread;
 import static java.util.concurrent.ThreadLocalRandom.current;
 
 /**
+ * Condition是多线程间协调通信的工具类，它使得线程可以等待某个条件的满足，并在条件满足时被唤醒。
+ * 这种机制使得线程间的协作更加安全和高效，是实现生产者消费者模式的理想选择。
+ * <p>
+ * 在实际开发中，Condition的使用可以提高程序的可读性和可维护性，同时也能够提供比传统方法更细粒度的线程控制。
+ * 因此，对于需要复杂线程同步控制的场景，推荐使用Condition来实现线程间的协作。
  * @author Hutu
  * @since 2024-04-26 下午 10:15
  */
