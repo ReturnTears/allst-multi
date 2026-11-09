@@ -16,8 +16,11 @@ import static java.util.concurrent.ThreadLocalRandom.current;
 import static java.util.stream.Collectors.toList;
 
 /**
- * CyclicBarrierExample1的使用场景
- *
+ * Cyclic Barrier的使用场景
+ * CyclicBarrier 是 Java 中的一个同步辅助类，用于协调多个线程之间的互相等待，直到所有线程都达到一个公共屏障点（Barrier）后再继续执行。
+ * 它的名字中 "Cyclic" 表示这个屏障是可以重复使用的，而 "Barrier" 就是屏障的意思。CyclicBarrier 适用于这样的场景：你有一组线程，
+ * 它们必须互相等待至某个状态之后才能全部继续执行。
+ * <p>
  * Cyclic Barrier与CountDownLatch非常类似，但是它们之间的运行方式以及原理还是存在着比较大的差异的，
  * 并且CyclicBarrier所能支持的功能CountDownLatch是不具备的。比如，CyclicBarrier可以被重复使用，而CountDownLatch当计数器为0的时候就无法再次利用
  *
