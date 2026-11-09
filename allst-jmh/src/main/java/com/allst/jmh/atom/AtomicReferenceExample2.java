@@ -16,7 +16,7 @@ import static java.util.concurrent.ThreadLocalRandom.current;
  * @since 2024-04-19 下午 09:44
  */
 public class AtomicReferenceExample2 {
-    private static AtomicReference<DebitCard> debitCardRef = new AtomicReference<>(new DebitCard("KangKang", 1000));
+    private static final AtomicReference<DebitCard> debitCardRef = new AtomicReference<>(new DebitCard("KangKang", 1000));
 
     public static void main(String[] args) {
         for (int i = 0; i < 10; i++) {

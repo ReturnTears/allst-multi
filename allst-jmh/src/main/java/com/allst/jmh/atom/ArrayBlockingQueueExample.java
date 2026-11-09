@@ -10,7 +10,8 @@ import java.util.concurrent.TimeUnit;
  */
 public class ArrayBlockingQueueExample {
     public static void main(String[] args) {
-
+        ArrayBlockingQueueExample example = new ArrayBlockingQueueExample();
+        example.queueOfferTimeOut();
     }
 
     /**

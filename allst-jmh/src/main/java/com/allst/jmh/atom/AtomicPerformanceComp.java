@@ -55,7 +55,7 @@ public class AtomicPerformanceComp {
     // 直接采用AtomicInteger
     @State(Scope.Group)
     public static class AtomicIntegerMonitor {
-        private AtomicInteger x = new AtomicInteger();
+        private final AtomicInteger x = new AtomicInteger();
 
         public void inc() {
             x.incrementAndGet();
