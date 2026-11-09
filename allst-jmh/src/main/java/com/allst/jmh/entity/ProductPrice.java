@@ -1,5 +1,8 @@
 package com.allst.jmh.entity;
 
+import lombok.Getter;
+import lombok.Setter;
+
 /**
  * 商品价格实体
  *
@@ -7,7 +10,9 @@ package com.allst.jmh.entity;
  * @since 2024-04-20 上午 11:07
  */
 public class ProductPrice {
+    @Getter
     private final int prodID;
+    @Setter
     private double price;
 
     public ProductPrice(int prodID) {
@@ -19,19 +24,8 @@ public class ProductPrice {
         this.price = price;
     }
 
-    public int getProdID() {
-        return prodID;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
     @Override
     public String toString() {
-        return "ProductPrice{" +
-                "prodID=" + prodID +
-                ", price=" + price +
-                '}';
+        return "ProductPrice{prodID=" + prodID + ", price=" + price + '}';
     }
 }
