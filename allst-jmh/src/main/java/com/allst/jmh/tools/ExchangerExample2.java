@@ -1,5 +1,7 @@
 package com.allst.jmh.tools;
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.util.concurrent.Exchanger;
 import java.util.concurrent.TimeUnit;
 
@@ -9,6 +11,7 @@ import static java.util.concurrent.ThreadLocalRandom.current;
  * @author Hutu
  * @since 2024-04-22 下午 09:09
  */
+@Slf4j
 public class ExchangerExample2 {
 
     public static void main(String[] args) {
@@ -44,9 +47,11 @@ public class ExchangerExample2 {
         protected final Exchanger<String> exchanger;
         // 线程关闭标志
         private volatile boolean closed = false;
+        private final String threadName;
 
         public ClosableThread(Exchanger<String> exchanger, final String name) {
             super(name);
+            this.threadName = name;
             this.exchanger = exchanger;
         }
 
@@ -61,7 +66,7 @@ public class ExchangerExample2 {
         // 关闭方法
         @Override
         public void close() {
-            System.out.println(currentThread() + "will be closed.");
+            System.out.println(threadName + " will be closed.");
             this.closed = true;
             this.interrupt();
         }
@@ -84,9 +89,9 @@ public class ExchangerExample2 {
         protected void doExchange() {
             StringBuilder data = new StringBuilder();
             for (int i = 0; i < 3; i++) {
-                randomSleep();
                 data.append(++initialValue);
             }
+            randomSleep();
             try {
                 // 如果当前线程未关闭，则执行Exchanger的exchange方法
                 if (!this.closed()) {
@@ -121,6 +126,7 @@ public class ExchangerExample2 {
         try {
             TimeUnit.SECONDS.sleep(current().nextInt(5));
         } catch (InterruptedException e) {
+            log.info("randomSleep method interrupted.");
         }
     }
 }
