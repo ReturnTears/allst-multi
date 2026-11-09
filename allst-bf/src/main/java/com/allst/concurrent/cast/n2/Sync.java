@@ -15,14 +15,12 @@ import java.io.IOException;
 public class Sync {
 
     public static void main(String[] args) {
-        try {
-            FileReader reader = new FileReader(Constants.MP4_FULL_PATH);    // 同步
+        try (FileReader reader = new FileReader(Constants.MP4_FULL_PATH)) {    // 同步
             int read = reader.read();
-            log.debug(read + "");
+            log.debug("{}", read);
             log.debug("do other things....");
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-
 }

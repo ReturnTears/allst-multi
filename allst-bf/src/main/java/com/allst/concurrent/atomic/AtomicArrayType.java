@@ -33,5 +33,6 @@ public class AtomicArrayType {
         } else {
             System.out.println("update error !");
         }
+        System.out.println(aia.get(1));
     }
 }

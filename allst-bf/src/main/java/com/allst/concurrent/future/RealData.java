@@ -9,7 +9,7 @@ public class RealData implements Data {
     public RealData(String queryStr) {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < 10; i++) {
-            sb.append(queryStr);
+            sb.append(queryStr).append("-").append(i + 1).append("\r\n");
             try {
                 Thread.sleep(100);
             } catch (InterruptedException e) {
